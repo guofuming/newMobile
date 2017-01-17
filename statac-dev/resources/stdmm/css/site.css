@@ -1,0 +1,65 @@
+@charset "utf-8";
+#index {
+  font-size: .12rem;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  background: url('../../common/img/loading.jpg') center no-repeat;
+  background-size: cover;
+}
+#index .logo {
+  width: 100%;
+  height: 90px;
+  background: url('../../common/img/logo.png') bottom center no-repeat;
+  background-size: 220px;
+  margin-bottom: 20px;
+}
+#index .text {
+  font-size: .14rem;
+  text-align: center;
+  padding: 0 10px;
+}
+#index .text span {
+  font-size: .14rem;
+  font-weight: bold;
+}
+#index .footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+}
+#index p {
+  padding-bottom: 10px;
+}
+#index .view_full {
+  padding-top: 20px;
+  padding-bottom: 12px;
+}
+#index button {
+  width: 230px;
+  margin: 6px;
+  font-size: .14rem;
+}
+#index .signup {
+  color: #fff;
+  background: #3FAFE4;
+}
+#index .login {
+  background-color: #fff;
+  color: #3FAFE4;
+}
+/* media */
+/* 横屏 */
+@media screen and (orientation: landscape) {
+  #index {
+    background: url(../img/hp_loading.jpg) center no-repeat;
+    background-size: cover;
+    background-color: #3FAFE4;
+  }
+}
+/* 竖屏 */
+/* 窗口宽度<960,设计宽度=768 */
+/* 窗口宽度<768,设计宽度=640 */
+/* 窗口宽度<640,设计宽度=480 */
+/* 窗口宽度<480,设计宽度=320 */
