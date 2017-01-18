@@ -5,21 +5,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="resources/common/css/common.css">
+    <script type="text/javascript" src="../statac-dev/component/seajs/sea.js"></script>
+    <script type="text/javascript" src="../statac-dev/component/seajs/seajs-text.js"></script>
 </head>
 
 <body>
-    <div id="index" class="g-doc">
-        <div class="logo f-pt10"></div>
-        <div class="text">The Largest Herpes &amp; STD Dating Community and Support with <span>67,600</span>+ Members</div>
-        <div class="footer">
-            <div class="button_warp">
-                <button class="u-btn signup">SIGN UP</button>
-                <button class="u-btn login">LOG IN</button>
-            </div>
-            <p class="view_full">VIEW FULL WEBSITE</p>
-            <p class="copyright">© 2001 - 2017 PositiveSingles.com</p>
-        </div>
+    <div class="l-page">
+        <div class="u-load"></div>
+        <div class="u-loadBg"></div>
     </div>
+    <script type="text/javascript">
+    var siteUrl = 'http://www.test.com/test/git/newMobile/'
+    seajs.config({
+        vars: {
+            'component': siteUrl + 'statac-dev/component/',
+        },
+        base: "../statac-dev/",
+        preload: ["$", "backbone", "underscore"],
+        alias: {
+            "$": siteUrl + "statac-dev/component/zepto/zepto.js",
+            "backbone": siteUrl + "statac-dev/component/backbone/backbone.js",
+            "underscore": siteUrl + "statac-dev/component/underscore/underscore.js",
+        }
+    });
+    seajs.use(['$', 'backbone', 'underscore'], function($, backone, underscore) {
+        window.$ = $;
+        window.Backone = backone;
+        window._ = underscore;
+        console.log($, backone, underscore);
+        seajs.use('../statac-dev/controller/main.js');
+    })
+    </script>
 </body>
+
 </html>

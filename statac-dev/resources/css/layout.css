@@ -1,3 +1,4 @@
+@charset "utf-8";
 /*css reset*/
 body,
 div,
@@ -29,10 +30,6 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-fieldset,
-img {
-  border: 0;
-}
 address,
 caption,
 cite,
@@ -44,43 +41,6 @@ th,
 var {
   font-style: normal;
   font-weight: normal;
-}
-ol,
-ul {
-  list-style: none;
-}
-caption,
-th {
-  text-align: left;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: 100%;
-  font-weight: normal;
-}
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: ' ';
-}
-abbr,
-acronym {
-  border: 0;
-  font-variant: normal;
-}
-sup {
-  vertical-align: text-top;
-}
-sub {
-  vertical-align: text-bottom;
-}
-legend {
-  color: #000;
 }
 input,
 button,
@@ -94,37 +54,21 @@ option {
   font-weight: inherit;
   outline: none;
 }
-input,
-button,
-textarea,
-select {
-  *font-size: 100%;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
 }
-cite {
-  font-style: normal;
+ol,
+ul {
+  list-style: none;
 }
-/*custom reset*/
-html,
-body {
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  font: 100px/1.5 Helvetica, Tahoma, Arial, sans-serif;
-  background: inherit;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent;
-  -moz-tap-highlight-color: transparent;
-}
-*,
-*::before,
-*::after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+img {
+  border: 0;
 }
 a {
   text-decoration: none;
@@ -157,6 +101,28 @@ textarea:-ms-input-placeholder {
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
   color: #ccc;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  font: 100px/1.5 Helvetica, Tahoma, Arial, sans-serif;
+  background: inherit;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -moz-tap-highlight-color: transparent;
+}
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 /* 功能形样式*/
 .f-cb:after,
@@ -294,4 +260,95 @@ textarea::-webkit-input-placeholder {
   -webkit-border-radius: 2px;
   border-radius: 2px;
 }
+.u-load {
+  background: url(../img/max_loading.gif) #000 no-repeat center center;
+  background-size: 80% 80%;
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  z-index: 10002;
+}
+.u-loadBg {
+  background: #000;
+  position: fixed;
+  z-index: 10001;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: .3;
+  filter: alpha(opacity=30);
+}
 /*工具*/
+#index {
+  font-size: .12rem;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  background: url('../img/loading.jpg') center no-repeat;
+  background-size: cover;
+}
+#index .logo {
+  width: 100%;
+  height: 90px;
+  background: url('../img/logo.png') bottom center no-repeat;
+  background-size: 220px;
+  margin-bottom: 20px;
+}
+#index .text {
+  font-size: .14rem;
+  text-align: center;
+  padding: 0 10px;
+}
+#index .text span {
+  font-size: .14rem;
+  font-weight: bold;
+}
+#index .footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+}
+#index p {
+  padding-bottom: 10px;
+}
+#index .view_full {
+  padding-top: 20px;
+  padding-bottom: 12px;
+}
+#index button {
+  width: 230px;
+  margin: 6px;
+  font-size: .14rem;
+}
+#index .signup {
+  color: #fff;
+  background: #3FAFE4;
+}
+#index .login {
+  background-color: #fff;
+  color: #3FAFE4;
+}
+/* media */
+/* 横屏 */
+@media screen and (orientation: landscape) {
+  #index {
+    background: url(../img/hp_loading.jpg) center no-repeat;
+    background-size: cover;
+    background-color: #3FAFE4;
+  }
+}
+/* 竖屏 */
+/* 窗口宽度<960,设计宽度=768 */
+/* 窗口宽度<768,设计宽度=640 */
+/* 窗口宽度<640,设计宽度=480 */
+/* 窗口宽度<480,设计宽度=320 */

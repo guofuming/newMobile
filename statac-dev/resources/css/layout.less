@@ -1,21 +1,22 @@
 @charset "utf-8";
 
-@import "../../common/css/global";  //全局样式
+@import "reset";  //重置样式
+@import "global";  //全局样式
 
 @s-cl : #3FAFE4;
-@common-path : '../../common/';
+@bg-path : '../img/';
 
 #index{
     font-size: .12rem;
     color: #fff;
     width: 100%;
     height: 100%;
-    background: url('@{common-path}img/loading.jpg') center no-repeat;
+    background: url('@{bg-path}loading.jpg') center no-repeat;
     background-size: cover;
     .logo {
         width: 100%;
         height: 90px;
-        background: url('@{common-path}img/logo.png') bottom center no-repeat;
+        background: url('@{bg-path}logo.png') bottom center no-repeat;
         background-size: 220px;
         margin-bottom: 20px;
     }
@@ -57,5 +58,7 @@
     }
 }
 
+//皮肤
+@import "skin";
 // 设备样式
-@import "../../common/css/media";  
+@import "media";  
