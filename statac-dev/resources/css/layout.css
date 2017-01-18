@@ -235,13 +235,6 @@ body {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-/* 结构布局样式*/
-.g-doc {
-  background: inherit;
-}
-.g-bd {
-  padding: 0.5rem;
-}
 /* 原件代码*/
 .u-btn {
   display: inline-block;
@@ -266,11 +259,6 @@ body {
   width: 50px;
   height: 50px;
   margin: auto;
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
@@ -288,6 +276,24 @@ body {
   filter: alpha(opacity=30);
 }
 /*工具*/
+/*
+    公共y样式
+*/
+/* 结构布局样式*/
+/* 全局和通用样式*/
+.g-doc {
+  background: inherit;
+}
+.g-bd {
+  padding: 0.5rem;
+}
+#loading .u-load {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
 #index {
   font-size: .12rem;
   color: #fff;

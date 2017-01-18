@@ -1,10 +1,33 @@
 define(function(require, exports, module) {
 
-    var controller;
-    var tpl = require('view/index.tpl');
+    var controller,
+        mId = 'index',
+        tpl = require('view/index.tpl');
+
+
     controller = {
-        render: function() {
-            $('body').append(tpl);
+
+        template: _.template(tpl),
+        
+        render: function(obj) {
+        	console.log(share.isDom($('#' + mId)))
+            if (share.isDom($('#' + mId))) {
+                $('#' + mId).css('display', 'block');
+            } else {
+                $('body').append(this.template());
+                this.bindEvt();
+            }
+        },
+
+        bindEvt: function() {
+        	var dom = $('#' + mId);
+        	dom.find('.signup').on('tap' ,function(){
+        		// window.location.href = '#signin';
+        	});
+
+            dom.find('.login').on('tap', function() {
+        		window.location.href = '#signin/whole';
+        	});
 
         }
     }

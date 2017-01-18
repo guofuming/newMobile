@@ -32,11 +32,7 @@
 .f-wwb{white-space:normal;word-wrap:break-word;word-break:normal;}
 .f-toe{overflow:hidden;word-wrap:normal;white-space:nowrap;text-overflow:ellipsis;}
 
-/* 结构布局样式*/
 
-.g-doc{background:inherit;}
-.g-bd{padding:0.5rem;}
-.g-bd-1{}
 
 /* 原件代码*/
 
@@ -64,11 +60,6 @@
     width: 50px;
     height: 50px;
     margin: auto;
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
@@ -86,6 +77,7 @@
     filter: alpha(opacity=30);
 }
 
+
 /*工具*/
 .prefix(@style,@value){
     -webkit-@{style}: @value;
@@ -97,3 +89,23 @@
 
 
 
+/*
+    公共样式
+*/
+/* 结构布局样式*/
+/* 全局和通用样式*/
+.g-doc{background:inherit;}
+.g-bd{padding:0.5rem;}
+.g-bd-1{}
+
+
+/**与js相关的用样式挂上id**/
+#loading {
+    .u-load {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+    }
+}

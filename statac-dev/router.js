@@ -20,14 +20,20 @@ define(function(require, exports, module) {
         },
 
         loadPage: function(obj) {
+            console.log(obj)
             var url = siteUrl + 'statac-dev/controller/'+obj.name;
+
+            share.loadPage($('body'));
+            $('g-doc').hide();
+
             require.async(url, function(module) {
                 if (module) {
-                    // share.pageLoad(false, $('body'));
                     seajs.moduleUI = obj.name;
                     module.render(obj);
+                    share.loadPage($('body'),false);
                 } else {
                     // alert('Loading failed. Please refresh and try again!');
+                    console.log('Loading failed. Please refresh and try again!');
                 }
             });
         }

@@ -4,17 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="telephone=no" name="format-detection">
+    <title>Positive Singles : Herpes Dating Site | STD Mobile Dating Site</title>
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="positivesingles.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="positivesingles.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="positivesingles.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="positivesingles.png">
+    <link rel="shortcut icon" href="favicon.ico" />
     <script type="text/javascript" src="../statac-dev/component/seajs/sea.js"></script>
     <script type="text/javascript" src="../statac-dev/component/seajs/seajs-text.js"></script>
 </head>
 
 <body>
-    <div class="l-page">
+    <div id='loading'>
         <div class="u-load"></div>
         <div class="u-loadBg"></div>
     </div>
 
+    
     <script type="text/javascript">
     var siteUrl = 'http://www.test.com/test/git/newMobile/'
     seajs.config({
@@ -27,12 +36,15 @@
             "$": siteUrl + "statac-dev/component/zepto/zepto.js",
             "backbone": siteUrl + "statac-dev/component/backbone/backbone.js",
             "underscore": siteUrl + "statac-dev/component/underscore/underscore.js",
+            "share": siteUrl + "statac-dev/share.js",
+            "lang": siteUrl + "statac-dev/i18n/en.js",
         }
     });
-    seajs.use(['$', 'backbone', 'underscore'], function($, backone, underscore) {
-        window.$ = $;
+    seajs.use(['backbone', 'underscore', 'share', 'lang'], function(backone, underscore, share, lang) {
         window.Backbone = backone;
         window._ = underscore;
+        window.share = share;
+        window.lang = lang;
         seajs.use('../statac-dev/main.js');
     });
     </script>

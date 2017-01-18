@@ -7,6 +7,6 @@
             <button class="u-btn login">LOG IN</button>
         </div>
         <p class="view_full">VIEW FULL WEBSITE</p>
-        <p class="copyright">© 2001 - 2017 PositiveSingles.com</p>
+        <p class="copyright">© 2001 - 2017 <%= lang.siteName %></p>
     </div>
 </div>
