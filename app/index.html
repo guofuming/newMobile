@@ -14,6 +14,7 @@
         <div class="u-load"></div>
         <div class="u-loadBg"></div>
     </div>
+
     <script type="text/javascript">
     var siteUrl = 'http://www.test.com/test/git/newMobile/'
     seajs.config({
@@ -30,11 +31,10 @@
     });
     seajs.use(['$', 'backbone', 'underscore'], function($, backone, underscore) {
         window.$ = $;
-        window.Backone = backone;
+        window.Backbone = backone;
         window._ = underscore;
-        console.log($, backone, underscore);
-        seajs.use('../statac-dev/controller/main.js');
-    })
+        seajs.use('../statac-dev/main.js');
+    });
     </script>
 </body>
 
