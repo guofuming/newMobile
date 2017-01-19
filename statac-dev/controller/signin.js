@@ -9,7 +9,6 @@ define(function(require, exports, module) {
         template: _.template(tpl),
         
         render: function(obj) {
-            console.log(share.isDom($('#' + mId)))
             if (share.isDom($('#' + mId))) {
                 $('#' + mId).css('display', 'block');
             } else {
@@ -19,22 +18,42 @@ define(function(require, exports, module) {
         },
 
         bindEvt: function() {
-        	var dom = $('#' + mId);
+        	var tthis = this,
+                dom = $('#' + mId);
 
             dom.find('.back').on('tap', function() {
-                // window.history.go(-1);
-                console.log('bb')
-                // window.location.href = '#index/whole'
+                window.history.go(-1);
         	});
 
-            // dom.find('button').on('tap', function() {
-            //     console.log('button')
-            // });
-
-            dom.find('button').tap(function() {
-                console.log('button')
+            dom.find('button').on('tap', function() {
+                var obj = {
+                    username:dom.find('input[name=username]').val() || 'wells2015',
+                    password:dom.find('input[name=password]').val() || '12345678'
+                };
+                tthis.login(obj);
             });
+
+        },
+
+        login: function(obj){
+
+             $.ajax({
+
+               url: "http://www.a.com/apis/login",
+
+               data: obj,
+
+               success: function(data){
+                console.log(data)
+               }
+
+             });
+                        
+            console.log(obj)
         }
+
+
+
     }
     module.exports = controller;
 })

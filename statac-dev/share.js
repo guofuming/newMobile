@@ -2,7 +2,6 @@ define(function(require, exports, module) {
 
     var share = {};
 
-
     share.isDom = function(dom){
         var bool = dom.length > 0 ? true : false;
         return bool;
@@ -17,7 +16,17 @@ define(function(require, exports, module) {
         if(bool || bool === undefined){
             dom.append(html);
         }
-    }
+    };
+
+    share.ajax = function(obj){
+        $.ajax({
+            url: "test.html",
+            cache: false,
+            success: function(data){
+                $("#results").append(html);
+            }
+        });
+    };
 
     module.exports = share;
 });
