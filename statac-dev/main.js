@@ -5,7 +5,5 @@ define(function(require, exports, module) {
     window.routerObj = new router;
     Backbone.history.start();
 
-
-
     
 })

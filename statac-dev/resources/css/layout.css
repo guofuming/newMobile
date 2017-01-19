@@ -365,6 +365,14 @@ body {
 #signin .g-bd {
   padding: .2rem;
 }
+#signin .validation input {
+  width: calc(100% - 122px);
+}
+#signin .validation img {
+  float: right;
+  margin-top: 15px;
+  width: 100px;
+}
 #signin input {
   border: 1px solid #ccc;
 }

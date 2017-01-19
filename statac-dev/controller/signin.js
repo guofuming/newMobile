@@ -7,7 +7,7 @@ define(function(require, exports, module) {
     controller = {
 
         template: _.template(tpl),
-        
+
         render: function(obj) {
             if (share.isDom($('#' + mId))) {
                 $('#' + mId).css('display', 'block');
@@ -18,37 +18,48 @@ define(function(require, exports, module) {
         },
 
         bindEvt: function() {
-        	var tthis = this,
+            var tthis = this,
                 dom = $('#' + mId);
 
             dom.find('.back').on('tap', function() {
                 window.history.go(-1);
-        	});
+            });
+
+            dom.find('input[name=username]').val('wells2015');
+            dom.find('input[name=password]').val('12345678');
 
             dom.find('button').on('tap', function() {
                 var obj = {
-                    username:dom.find('input[name=username]').val() || 'wells2015',
-                    password:dom.find('input[name=password]').val() || '12345678'
+                    username: dom.find('input[name=username]').val(),
+                    password: dom.find('input[name=password]').val(),
+                    confirm_number: dom.find('input[name=validaNum]').val()
                 };
                 tthis.login(obj);
             });
 
         },
+        
+        refreshNum :function(){
+            var dom = $('#' + mId),
+                imgUrl = seajs.data.vars.apiUrl + 'show_captcha_url?username='+ dom.find('input[name=username]').val() + '&r='+Math.random();
+            dom.find('.validation img').attr('src',imgUrl);
+        },
+        
+        login: function(obj) {
+            var tthis = this, 
+                dom = $('#' + mId);
+            $.ajax({
+                url: seajs.data.vars.apiUrl + "login",
+                type: 'POST',
+                data: obj,
+                success: function(data) {
+                    if (data.errcode == 110 || data.errcode == 102) {
+                        dom.find('.validation').show();
+                        tthis.refreshNum();
+                    }
+                }
 
-        login: function(obj){
-
-             $.ajax({
-
-               url: "http://www.a.com/apis/login",
-
-               data: obj,
-
-               success: function(data){
-                console.log(data)
-               }
-
-             });
-                        
+            });
             console.log(obj)
         }
 
