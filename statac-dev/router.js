@@ -20,12 +20,9 @@ define(function(require, exports, module) {
         },
 
         loadPage: function(obj) {
-            console.log(obj)
             var url = siteUrl + 'statac-dev/controller/'+obj.name;
-
             share.loadPage($('body'));
-            $('g-doc').hide();
-
+            $('.g-doc').hide();
             require.async(url, function(module) {
                 if (module) {
                     seajs.moduleUI = obj.name;

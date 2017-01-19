@@ -4,13 +4,11 @@ define(function(require, exports, module) {
         mId = 'index',
         tpl = require('view/index.tpl');
 
-
     controller = {
 
         template: _.template(tpl),
         
         render: function(obj) {
-        	console.log(share.isDom($('#' + mId)))
             if (share.isDom($('#' + mId))) {
                 $('#' + mId).css('display', 'block');
             } else {

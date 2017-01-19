@@ -19,11 +19,13 @@
 
 <body>
     <div id='loading'>
-        <div class="u-load"></div>
-        <div class="u-loadBg"></div>
+        <div class="load"></div>
+        <div class="loadBg"></div>
     </div>
-
-    
+    <style type="text/css">
+        #loading .load{position:fixed;z-index:10002;left:0;top:0;bottom:0;right:0;background:url(../statac-dev/resources/img/max_loading.gif)#000 no-repeat center center;background-size:80% 80%;width:50px;height:50px;margin:auto;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;}
+        #loading .loadBg{background:#000;position:fixed;z-index:10001;left:0;right:0;top:0;bottom:0;opacity:.3;filter:alpha(opacity=30);}
+    </style>
     <script type="text/javascript">
     var siteUrl = 'http://www.test.com/test/git/newMobile/'
     seajs.config({

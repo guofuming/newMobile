@@ -42,6 +42,7 @@
     margin-bottom: 0;
     font-size: 16px;
     font-weight: 400;
+    width: 100%;
     height: 40px;
     text-align: center;
     white-space: nowrap;
@@ -49,35 +50,25 @@
     cursor: pointer;
     background-image: none;
     border: 1px solid transparent;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
     border-radius: 2px;
+    color: #fff;
+    background-color: @g-cl;
 }
-
-.u-load{
-    background: url(../img/max_loading.gif)#000 no-repeat center center;
-    background-size: 80% 80%;
-    width: 50px;
-    height: 50px;
-    margin: auto;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    z-index: 10002;
+.u-input{
+    margin-top: 15px;
+    background-color: #fff;
+    border: 1px solid #bfbfbf;
+    border-radius: 3px;
+    height: 46px;
+    line-height: 30px;
+    font-size: 14px;
+    text-indent: 4px;
+    color: #000;
+    width: 100%;
+    padding-left: 4%;
+    padding-right: 4%;
+    background-repeat: no-repeat;
 }
-.u-loadBg{
-    background: #000;
-    position: fixed;
-    z-index: 10001;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    opacity: .3;
-    filter: alpha(opacity=30);
-}
-
-
 /*工具*/
 .prefix(@style,@value){
     -webkit-@{style}: @value;
@@ -89,23 +80,7 @@
 
 
 
-/*
-    公共样式
-*/
-/* 结构布局样式*/
-/* 全局和通用样式*/
-.g-doc{background:inherit;}
-.g-bd{padding:0.5rem;}
-.g-bd-1{}
 
 
 /**与js相关的用样式挂上id**/
-#loading {
-    .u-load {
-        position: fixed;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        right: 0;
-    }
-}
+
