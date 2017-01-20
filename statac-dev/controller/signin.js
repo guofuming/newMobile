@@ -29,6 +29,7 @@ define(function(require, exports, module) {
             dom.find('input[name=password]').val('12345678');
 
             dom.find('button').on('tap', function() {
+                share.btnLoading($(this));
                 var obj = {
                     username: dom.find('input[name=username]').val(),
                     password: dom.find('input[name=password]').val(),
@@ -40,27 +41,36 @@ define(function(require, exports, module) {
         },
         
         refreshNum :function(){
+            // console.log('refreshNum')
             var dom = $('#' + mId),
+                domValidation = $('#' + mId).find('.validation'),
                 imgUrl = seajs.data.vars.apiUrl + 'show_captcha_url?username='+ dom.find('input[name=username]').val() + '&r='+Math.random();
-            dom.find('.validation img').attr('src',imgUrl);
+            domValidation.show();
+            domValidation.find('.img_box').addClass('loading');
+            domValidation.find('img').attr('src',seajs.data.vars.resources + 'img/max_loading.gif');
+            share.imgLoad(imgUrl,function(){
+                domValidation.find('.img_box').removeClass('loading');
+                domValidation.find('img').attr('src',imgUrl);
+            });
         },
         
         login: function(obj) {
             var tthis = this, 
                 dom = $('#' + mId);
-            $.ajax({
+
+            var ajaxObj = {
                 url: seajs.data.vars.apiUrl + "login",
                 type: 'POST',
                 data: obj,
                 success: function(data) {
+                    console.log(data);
                     if (data.errcode == 110 || data.errcode == 102) {
-                        dom.find('.validation').show();
                         tthis.refreshNum();
                     }
+                    share.btnLoading(dom.find('.btn_loading'),false);
                 }
-
-            });
-            console.log(obj)
+            }
+            $.ajax(share.ajaxControl(ajaxObj));
         }
 
 
