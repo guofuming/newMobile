@@ -13,7 +13,7 @@
 /* 全局和通用样式*/
 .g-doc{background:inherit;}
 .g-bd{padding:0.1rem; color: #999;}
-.g-bd-1{}
+.g-bd-1{color: #999;}
 
 .g-hd {
     height: 44px;
@@ -23,6 +23,10 @@
     position: absolute;
     top: 0;
     left:0;
+    width: 44px;
+    height: 44px;
+    display: block;
+
 }
 .g-hd .right{
     position: absolute;
@@ -30,12 +34,15 @@
     right:0;
 }
 .g-hd .back{
-    width: 44px;
-    display: block;
-    height: 44px;
     background: url('@{g-bgPath}/back.png') no-repeat 10px center;
     background-size: 25px 20px;
 }
+
+.g-hd .more{
+    background: url('@{g-bgPath}/left.png') no-repeat 10px center;
+    background-size: 25px 20px;
+}
+
 .g-hd .center{
     padding: 0 48px;
     line-height: 44px;
@@ -156,6 +163,66 @@
 
 }
 
+
+#myProfile{
+    .info_box{
+        padding-top: 16px;
+
+    }
+    .portrait{
+        float: left;
+        width: 106px;
+        text-align: center;
+        // line-height: 80px;
+        img{
+            width: 60px;
+            height: 60px;
+            vertical-align: middle;
+            .prefix(border-radius,50%);
+        }        
+    }
+    .info_right{
+        font-size: .14rem;
+        .name{
+            color: #000;
+        }
+        padding-left: 106px;
+    }
+    .u-btn{
+        width: 100px;
+        height: 24px;
+        line-height: 24px;
+        font-size: .13rem;
+        margin-top: 10px;
+        .prefix(border-radius,0);
+    }
+
+    .tab_title{
+        background: #fff;
+        margin-top: 10px;
+        font-size: .14rem;
+        li{
+            &.selected{
+                border-bottom: 0;
+                div{
+                    border-bottom: 3px solid @g-cl;
+                }
+            }
+            div{
+                padding: 14px 0 8px 0;
+                text-align: center;
+            }
+            border-bottom: 1px solid #ccc;
+        }
+    }
+    .tab_content{
+        display: none;
+        padding: .1rem;
+        &.selected{
+            display: block;
+        }
+    }
+}
 
 
 
