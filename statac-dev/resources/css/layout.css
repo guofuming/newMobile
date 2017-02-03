@@ -22,7 +22,8 @@ textarea,
 p,
 blockquote,
 th,
-td {
+td,
+button {
   margin: 0;
   padding: 0;
 }
@@ -254,7 +255,6 @@ body {
 /* 原件代码*/
 .u-btn {
   display: inline-block;
-  margin-bottom: 0;
   font-size: 16px;
   font-weight: 400;
   width: 100%;
@@ -292,6 +292,10 @@ body {
 /* 全局和通用样式*/
 .g-doc {
   background: inherit;
+  transition: all .3s ease;
+}
+.g-doc.show {
+  transform: translateX(260px);
 }
 .g-bd {
   padding: 0.1rem;
@@ -333,6 +337,65 @@ body {
   font-size: .2rem;
 }
 /***************************************************/
+#panel {
+  transition: all .3s ease;
+  position: fixed;
+  z-index: 999;
+  left: -260px;
+  top: 0;
+  width: 260px;
+  height: 100%;
+  box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.05), inset 0 -2px 0 #F6F7F9, inset 0 2px 0 #F6F7F9, inset 2px 0 0 #F6F7F9;
+}
+#panel.show {
+  transform: translateX(260px);
+}
+#panel .panel_cover {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  width: calc(100% - 260px);
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  display: none;
+}
+#panel .head {
+  height: 90px;
+  padding: 10px;
+  color: #5c5c5d;
+}
+#panel .head dt {
+  float: left;
+  padding: 10px;
+}
+#panel .head dd {
+  float: left;
+  padding-left: 10px;
+  font-size: .18rem;
+  line-height: 66px;
+}
+#panel .head img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+#panel .panel_list {
+  font-size: .16rem;
+  line-height: .4rem;
+  color: #5c5c5d;
+}
+#panel .panel_list i {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  background: #999;
+  margin-left: 10px;
+  margin-right: 26px;
+}
+#panel .panel_list li {
+  padding: 0 20px;
+}
 #index {
   font-size: .12rem;
   color: #fff;
@@ -507,16 +570,17 @@ body {
   border-radius: 50%;
 }
 #myProfile .info_right {
-  font-size: .14rem;
   padding-left: 106px;
 }
 #myProfile .info_right .name {
+  font-size: .14rem;
+  line-height: 22px;
   color: #000;
 }
 #myProfile .u-btn {
   width: 100px;
   height: 24px;
-  line-height: 24px;
+  line-height: 20px;
   font-size: .13rem;
   margin-top: 10px;
   -webkit-border-radius: 0;
@@ -549,6 +613,55 @@ body {
 }
 #myProfile .tab_content.selected {
   display: block;
+}
+#myProfile .tab_content h3 {
+  line-height: 32px;
+}
+#myProfile .tab_content h3 span {
+  color: #000;
+  padding-right: 4px;
+}
+#myProfile .tab_content dl {
+  position: relative;
+  border: 1px solid #ccc;
+  padding: 8px 4px;
+  overflow: hidden;
+  height: 86px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+#myProfile .tab_content dl .more {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 20px;
+  height: 100%;
+  line-height: 80px;
+  text-align: center;
+  background-color: #eaeaea;
+  float: right;
+}
+#myProfile .tab_content dt,
+#myProfile .tab_content dd {
+  float: left;
+  width: 70px;
+  height: 70px;
+  margin: 0 4px;
+  margin-bottom: 10px;
+}
+#myProfile .tab_content dt {
+  background: url('../img/photo_addicon.jpg') no-repeat center;
+  background-size: 80px;
+}
+#myProfile .tab_content dd {
+  width: 70px;
+}
+#myProfile .tab_content img {
+  width: 70px;
+  height: 70px;
 }
 /* media */
 /* 横屏 */

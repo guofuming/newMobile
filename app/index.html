@@ -36,6 +36,9 @@
         },
         base: "../statac-dev/",
         preload: ["$", "backbone", "underscore"],
+        'map': [
+            [/^(.*\.(?:css|js|tpl))(.*)$/i, '$1?v='+Math.random()]
+        ],
         alias: {
             "$": siteUrl + "statac-dev/component/zepto/zepto.js",
             "backbone": siteUrl + "statac-dev/component/backbone/backbone.js",

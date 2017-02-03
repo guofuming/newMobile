@@ -64,6 +64,10 @@ define(function(require, exports, module) {
                 data: obj,
                 success: function(data) {
                     console.log(data);
+                    if(data.errcode == undefined){
+                        share.cacheLoadUser(data);
+                        window.location.href = '#myProfile/whole';
+                    }
                     if (data.errcode == 110 || data.errcode == 102) {
                         tthis.refreshNum();
                     }

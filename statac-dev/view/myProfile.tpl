@@ -6,19 +6,19 @@
     <div class="g-bd-1">
         <div class="info_box">
             <div class="portrait">
-                <img class="" src="http://s.tmatch.com/de/picssb75/4/034/1711034-1118762.jpg" url="http://s.tmatch.com/de/picssb75/4/034/1711034-1118762.jpg">
+                <img class="" src=<%=photo.picture%>>
             </div>
             <div class="info_right">
                 <div class="name">
-                    bert2024 
+                    <%= account.username%> 
                 </div>
                 <div class="text">
-                    <span>99</span> <span>● </span>
-                    <span>Woman</span><br>
-                    <span>New York, NY</span>
+                    <span><%= account.age%> </span> <span>● </span>
+                    <span><%= share.formGender(account.gender)%></span><br>
+                    <span><%= account.city%>,<%= account.state_name%></span>
                 </div>
                 <div class="u-btn upgrade">
-                    asd
+                    Upgrade
                 </div>
             </div>
         </div>
@@ -34,8 +34,39 @@
                 </ul>
             </div>
             <div class="tab_content_box">
-                <div class="selected tab_content">
-                    11111
+                <div class=" selected tab_content">
+                    <div class="album_box public_album">
+                        <h3><span class="title">Public</span>
+                            <% if(pictures.length){%>
+                                (<%= pictures.length %> photo)
+                            <%}%>
+                        </h3>
+                        <dl class="f-cb">
+                            <dt></dt>
+                            <% for(var i = 0; i< pictures.length; i++){%>
+                                <dd><img src="<%= pictures[i].icon%>" ></dd>
+                            <%}%>
+                            <div class="more">
+                                >
+                            </div>
+                        </dl>
+                    </div>
+                    <div class="album_box private_album">
+                        <!-- <h3><span class="title">Private</span>
+                        <% if(private_pictures.length){%>
+                            (<%= private_pictures.length %> photo)
+                        <%}%>
+                        </h3>
+                        <dl class="f-cb">
+                            <dt></dt>
+                            <% for(var i = 0; i< private_pictures.length; i++){%>
+                                <dd><img src="<%= private_pictures[i].icon%>" ></dd>
+                            <%}%>
+                            <div class="more">
+                                >
+                            </div>
+                        </dl> -->
+                    </div>
                 </div>
                 <div class="tab_content">
                     2222

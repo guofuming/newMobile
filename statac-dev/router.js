@@ -23,7 +23,7 @@ define(function(require, exports, module) {
             var url = siteUrl + 'statac-dev/controller/'+obj.name;
             share.loadPage($('body'));
             $('.g-doc').hide();
-            console.log(url)
+            // console.log(url)
             require.async(url, function(module) {
                 if (module) {
                     seajs.moduleUI = obj.name;
