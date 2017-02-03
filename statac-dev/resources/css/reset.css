@@ -109,12 +109,10 @@ input:-webkit-autofill {
 html {
   font: 100px/1.5 Helvetica, Tahoma, Arial, sans-serif;
   width: 100%;
-  height: 100%;
 }
 body {
   font-size: .12rem;
   width: 100%;
-  height: 100%;
   background: #f5f7f8;
   -webkit-user-select: none;
   -moz-user-select: none;

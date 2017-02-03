@@ -67,6 +67,56 @@
                             </div>
                         </dl> -->
                     </div>
+
+                    <div class="asdas">
+                        
+                        fixed经典布局 - JSFiddlep
+                        <p></p>
+Test your JavaScript, CSS, HTML or CoffeeScript online with JSFiddle code editor.
+                        <p></p>
+                        <p></p>
+                        <p></p>
+jsfiddle.net/jikeytang...  - 百度快照 - 评价 - 翻译此页
+怎么在鼠标离开触发区域时让:hover的效果延迟消失_fire..._百度贴吧
+
+38条回复 - 发帖时间: 2014年12月11日
+css3: transition 轮回眼的鸣人 乐享网络 13 /*侧栏鼠标经过弹出*/#content_right{position: fixed}.cr-content >.cr-title...
+tieba.baidu.com/p/3461...  - 百度快照
+                        <p></p>
+                        <p></p>
+                        <p></p>
+【全面解析Bootstrap中transition、affix的使用方法】-真格学网-...
+                        <p></p>
+2016年6月2日 - 这篇文章主要为大家详细解析了Bootstrap中transition、affix的使用方法,感兴趣...原因:行内样式设置的relative会覆盖class中设置的fixed样式6、总结1)...
+www.zgxue.com/itbc/art...  - <p></p>
+                        <p></p>
+2014年12月23日 - CSS clip 属性<p></p>
+                        <p></p>
+2014年12月23日 - CSS clip 属性<p></p>
+                        <p></p>
+2014年12月23日 - CSS clip 属性百度快照 - 评价
+                        <p></p>
+为您推荐：scrollspybootstrap 隐藏jquery 回到顶部bootstrap affix
+Css clip+transition制作裁剪动画_百度经验
+                        <p></p>
+
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+2014年12月23日 - CSS clip 属性<p></p>
+                        <p></p>
+2014年12月23日 - CSS clip 属性<p></p>
+                        <p></p>
+2014年12月23日 - CSS clip 属性<p></p>
+                        <p></p>
+2014年12月23日 - CSS clip 属性定义和用法clip 属性剪裁绝对定位元素。写法clip: rect (top, right, bottom, left);,CSS3 transition 过渡CSS3 过渡是元素从一种样式逐渐改变为另...
+                        <p></p>
+                        <p></p>
+jingyan.baidu.com/arti...  - 百度快照
+
+                    </div>
                 </div>
                 <div class="tab_content">
                     2222

@@ -23,20 +23,30 @@ define(function(require, exports, module) {
                 var index = $(this).index();
                 tthis.tabSwitch(dom.find('.tab_wrapper'), index);
             });
+
+            dom.find('.panel_cover').on('tap', function() {
+                tthis.toggle();
+            });
         },
 
         toggle:function(){
             var dom = $('#' + mId);
             if(this.status == 'show'){
                 this.status = 'hide';
+                $('html').removeClass('overHide');
                 dom.removeClass('show');
-                dom.find('.panel_cover').hide();
                 $('#' +  seajs.moduleUI).removeClass('show');
+
+                dom.find('.panel_cover').css({'display':'none','opacity':'0'});
             }else{
                 this.status = 'show';
+                $('html').addClass('overHide');
                 dom.addClass('show');
-                dom.find('.panel_cover').show();
                 $('#' +  seajs.moduleUI).addClass('show');
+                dom.find('.panel_cover').show();
+                setTimeout(function(){
+                    dom.find('.panel_cover').css({'display':'block','opacity':'1'});
+                },100)
             }
         }
 

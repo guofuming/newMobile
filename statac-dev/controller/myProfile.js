@@ -22,6 +22,7 @@ define(function(require, exports, module) {
                 $('body').append(this.template(userInfo));
                 this.bindEvt();
             }
+           
         },
 
         bindEvt: function() {
@@ -32,7 +33,7 @@ define(function(require, exports, module) {
                 tthis.tabSwitch(dom.find('.tab_wrapper'),index);
         	});
 
-            dom.find('.left').on('tap', function(){
+            dom.find('.left').on('click', function(){
                 panel.toggle();
             });
 

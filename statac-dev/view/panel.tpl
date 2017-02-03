@@ -1,5 +1,4 @@
 <div id="panel">
-    
     <div class="head">
         <dl>
             <dt><img src="<%= photo.picture %>" alt=""></dt>
@@ -21,7 +20,5 @@
             <li class="setting"><i></i>Settings & Help</li>
         </ul>
     </div>
-    <div class="panel_cover">
-        
-    </div>
+    <div class="panel_cover"></div>
 </div>

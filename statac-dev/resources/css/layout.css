@@ -109,12 +109,10 @@ input:-webkit-autofill {
 html {
   font: 100px/1.5 Helvetica, Tahoma, Arial, sans-serif;
   width: 100%;
-  height: 100%;
 }
 body {
   font-size: .12rem;
   width: 100%;
-  height: 100%;
   background: #f5f7f8;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -290,7 +288,15 @@ body {
 /***************************************************/
 /* 结构布局样式*/
 /* 全局和通用样式*/
+html.overHide,
+html.overHide body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 .g-doc {
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
   background: inherit;
   transition: all .3s ease;
 }
@@ -300,11 +306,18 @@ body {
 .g-bd {
   padding: 0.1rem;
   color: #999;
+  padding-top: 44px;
 }
 .g-bd-1 {
   color: #999;
+  padding-top: 44px;
 }
 .g-hd {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 100%;
   height: 44px;
   background-color: #2174C6;
 }
@@ -312,7 +325,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 44px;
+  width: 60px;
   height: 44px;
   display: block;
 }
@@ -354,11 +367,13 @@ body {
   position: fixed;
   z-index: 999;
   top: 0;
-  right: 0;
-  width: calc(100% - 260px);
+  left: 260px;
+  width: calc(100vw - 260px);
   height: 100%;
   background: rgba(0, 0, 0, 0.2);
   display: none;
+  transition: all 1s ease;
+  opacity: 0;
 }
 #panel .head {
   height: 90px;
@@ -447,7 +462,10 @@ body {
   /*end  css3 button */
 }
 #signin .g-bd {
-  padding: .2rem;
+  padding-top: 64px;
+  padding-left: .2rem;
+  padding-right: .2rem;
+  padding-bottom: .2rem;
 }
 #signin .validation input {
   width: calc(100% - 122px);
