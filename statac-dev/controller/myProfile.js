@@ -15,6 +15,7 @@ define(function(require, exports, module) {
         render: function(obj) {
             var userInfo = share.userInfo();
             panel.render(this.templatePanel);
+            
 
             if (share.isDom($('#' + mId))) {
                 $('#' + mId).css('display', 'block');
@@ -22,7 +23,7 @@ define(function(require, exports, module) {
                 $('body').append(this.template(userInfo));
                 this.bindEvt();
             }
-           
+            // panel.toggle();
         },
 
         bindEvt: function() {
@@ -34,6 +35,7 @@ define(function(require, exports, module) {
         	});
 
             dom.find('.left').on('click', function(){
+                // $(this).css('background','red')
                 panel.toggle();
             });
 

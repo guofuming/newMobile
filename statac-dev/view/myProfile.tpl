@@ -3,7 +3,7 @@
         <div class="left more"></div>
         <div class="f-toe center"> My Profile </div>
     </div>
-    <div class="g-bd-1">
+    <div class="g-bd">
         <div class="info_box">
             <div class="portrait">
                 <img class="" src=<%=photo.picture%>>
@@ -34,7 +34,7 @@
                 </ul>
             </div>
             <div class="tab_content_box">
-                <div class=" selected tab_content">
+                <div class="  tab_content">
                     <div class="album_box public_album">
                         <h3><span class="title">Public</span>
                             <% if(pictures.length){%>
@@ -67,62 +67,116 @@
                             </div>
                         </dl> -->
                     </div>
-
-                    <div class="asdas">
-                        
-                        fixed经典布局 - JSFiddlep
-                        <p></p>
-Test your JavaScript, CSS, HTML or CoffeeScript online with JSFiddle code editor.
-                        <p></p>
-                        <p></p>
-                        <p></p>
-jsfiddle.net/jikeytang...  - 百度快照 - 评价 - 翻译此页
-怎么在鼠标离开触发区域时让:hover的效果延迟消失_fire..._百度贴吧
-
-38条回复 - 发帖时间: 2014年12月11日
-css3: transition 轮回眼的鸣人 乐享网络 13 /*侧栏鼠标经过弹出*/#content_right{position: fixed}.cr-content >.cr-title...
-tieba.baidu.com/p/3461...  - 百度快照
-                        <p></p>
-                        <p></p>
-                        <p></p>
-【全面解析Bootstrap中transition、affix的使用方法】-真格学网-...
-                        <p></p>
-2016年6月2日 - 这篇文章主要为大家详细解析了Bootstrap中transition、affix的使用方法,感兴趣...原因:行内样式设置的relative会覆盖class中设置的fixed样式6、总结1)...
-www.zgxue.com/itbc/art...  - <p></p>
-                        <p></p>
-2014年12月23日 - CSS clip 属性<p></p>
-                        <p></p>
-2014年12月23日 - CSS clip 属性<p></p>
-                        <p></p>
-2014年12月23日 - CSS clip 属性百度快照 - 评价
-                        <p></p>
-为您推荐：scrollspybootstrap 隐藏jquery 回到顶部bootstrap affix
-Css clip+transition制作裁剪动画_百度经验
-                        <p></p>
-
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                        <p></p>
-2014年12月23日 - CSS clip 属性<p></p>
-                        <p></p>
-2014年12月23日 - CSS clip 属性<p></p>
-                        <p></p>
-2014年12月23日 - CSS clip 属性<p></p>
-                        <p></p>
-2014年12月23日 - CSS clip 属性定义和用法clip 属性剪裁绝对定位元素。写法clip: rect (top, right, bottom, left);,CSS3 transition 过渡CSS3 过渡是元素从一种样式逐渐改变为另...
-                        <p></p>
-                        <p></p>
-jingyan.baidu.com/arti...  - 百度快照
-
-                    </div>
                 </div>
-                <div class="tab_content">
-                    2222
+                <div class="selected tab_content tab_content_about">
+                    <ul>
+                        <li>
+                            <div class="title"><b> Headline </b><span url="editHeadline" class="edit"></span></div>
+                                <p>test test test</p>
+                        </li>
+                        <li>
+                            <div class="title"><b> About me </b><span url="editAboutme" class="edit"></span></div>
+                                <p class="aboutMeText">
+                                    fdfjdsklklf dfkljsfjklds fdjskjfkjlds fdjslkfdjsklfdlkst
+                                </p>
+                        </li>
+                        <li>
+                            <div class="title"><b> About my match </b><span url="editAboutMyMatch" class="edit"></span></div>
+                                <p class="aboutMeMatchText">
+                                    fdsjfdsjkf fjdslkfjkds fdjsfjsdkl jfdslkj fjdklfjdslk fds jfdskljf
+                                </p>
+                        </li>
+                        <li>
+                            <div class="title"><b> Living with </b><span url="editAboutLivingWith" class="edit"></span></div>
+                                <p><span>Please ask me</span></p>
+                        </li>
+                        <li>
+                            <div class="title"><b> I've been positive for </b><span url="editAboutPositiveFor" class="edit"></span></div>
+                                <p><span>Please ask me</span></p>
+                        </li>
+                        <li>
+                            <div class="title"><b> My experiences with my condition </b><span url="editAboutLearnedFromExperience" class="edit"></span></div>
+                                <p><span>Please ask me</span></p>
+                        </li>
+                        <li>
+                            <div class="title"><b> My first date idea </b><span class="edit" url="editAboutMyFirstDateIdea"></span></div>
+                                <p><span>Describe your first date ideas here.</span></p>
+                        </li>
+                        <li>
+                            <div class="title"><b> Relationship status </b><span class="edit" url="editAboutRelationshipStatus"></span></div>
+                                <p><span>Please ask me</span></p>
+                        </li>
+                        <li>
+                            <div class="title"><b> Looking for </b><span class="edit" url="editAboutLookfor"></span></div>
+                            <p>Men, ages 18 - 99, for Friendship, Dating, Long-term / Serious relationship, Marriage, Casual / Intimate, Riding buddy</p>
+                        </li>
+                    </ul>
                 </div>
-                <div class="tab_content">
-                    333
+                <div class="tab_content tab_content_details">
+                    <ul>
+                        <li><label class="title"> Worth </label><span class="edit" url="myProfileWorth"></span></li>
+                        <li><label> Annual income </label><span>Please ask me</span></li>
+                    </ul>
+                    <ul>
+                        <li><label class="title"> Appearance </label><span class="edit" url="myProfileBasic"></span></li>
+                        <li><label> Height </label><span>Please ask me</span></li>
+
+                        <li><label> Eye color </label><span>Please ask me</span></li>
+                        <li><label> Hair color </label><span>Please ask me</span></li>
+                        <li><label> Body type </label><span>Please ask me</span></li>
+                    </ul>
+                    <ul>
+                        <li><label class="title"> Lifestyle </label><span class="edit" url="myProfileLifeStyle"></span></li>
+                        <li><label> Occupation </label><span>Please ask me</span></li>
+                        <li><label> Smoking </label><span>Please ask me</span></li>
+                        <li><label> Drinking </label><span>Please ask me</span></li>
+                        <li><label> Have children </label><span>Please ask me</span></li>
+                        <li><label> Want children </label><span>Please ask me</span></li>
+                        <li><label> Have pets </label><span>Please ask me</span></li>
+                    </ul>
+                    <ul>
+                        <li><label class="title"> Background </label><span class="edit" url="myProfilePersonalInfo"></span></li>
+                        <li><label> Education </label><span>Please ask me</span></li>
+                        <li><label> Ethnicity </label><span>East Indian</span></li>
+                        <li><label> Languages </label><span>Please ask me</span></li>
+                        <li><label> Political beliefs </label><span>Please ask me</span></li>
+                        <li><label> Religion </label><span>Please ask me</span></li>
+                    </ul>
+                    <div class="match_title"> About my match</div>
+                    <ul>
+                        <li><label class="title"> Worth </label><span class="edit" url="myMatchWorth"></span></li>
+                        <li><label> Annual income </label><span>No preference</span></li>
+                    </ul>
+                    <ul>
+                        <li><label class="title"> Appearance </label><span class="edit" url="myMatchBasic"></span></li>
+                        <li>
+                            <label> Height </label>
+                            <span>
+                                No preference
+                            </span>
+                        </li>
+
+                        <li><label> Eye color </label><span>No preference</span></li>
+                        <li><label> Hair color </label><span>No preference</span></li>
+                        <li><label> Body type </label><span>No preference</span></li>
+                    </ul>
+                    <ul>
+                        <li><label class="title"> Lifestyle </label><span class="edit" url="myMatchLifeStyle"></span></li>
+                        <li><label> Occupation </label><span>No preference</span></li>
+                        <li><label> Smoking </label><span>No preference</span></li>
+                        <li><label> Drinking </label><span>No preference</span></li>
+                        <li><label> Have children </label><span>No preference</span></li>
+                        <li><label> Want children </label><span>No preference</span></li>
+                       <li><label> Have pets </label><span>No preference</span></li>
+                    </ul>
+                    <ul>
+                        <li><label class="title"> Background </label><span class="edit" url="myMatchPersonalInfo"></span></li>
+                        <li><label> Education </label><span>No preference</span></li>
+                        <li><label> Ethnicity </label><span>No preference</span></li>
+                        <li><label> Languages </label><span>No preference</span></li>
+                        <li><label> Political beliefs </label><span>No preference</span></li>
+                        <li><label> Religion </label><span>No preference</span></li>
+                    </ul>
                 </div>
             </div>
 

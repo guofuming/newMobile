@@ -2,9 +2,10 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="telephone=no" name="format-detection">
     <title>Positive Singles : Herpes Dating Site | STD Mobile Dating Site</title>
@@ -23,21 +24,47 @@
         <div class="loadBg"></div>
     </div>
     <style type="text/css">
-        #loading .load{position:fixed;z-index:10002;left:0;top:0;bottom:0;right:0;background:url(../statac-dev/resources/img/max_loading.gif)#000 no-repeat center center;background-size:80% 80%;width:50px;height:50px;margin:auto;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;}
-        #loading .loadBg{background:#000;position:fixed;z-index:10001;left:0;right:0;top:0;bottom:0;opacity:.3;filter:alpha(opacity=30);}
+    #loading .load {
+        position: fixed;
+        z-index: 10002;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background: url(../statac-dev/resources/img/max_loading.gif)#000 no-repeat center center;
+        background-size: 80% 80%;
+        width: 50px;
+        height: 50px;
+        margin: auto;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+    }
+    
+    #loading .loadBg {
+        background: #000;
+        position: fixed;
+        z-index: 10001;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        opacity: .3;
+        filter: alpha(opacity=30);
+    }
     </style>
     <script type="text/javascript">
     var siteUrl = 'http://www.test.com/test/git/newMobile/'
     seajs.config({
         vars: {
-            'apiUrl' : 'http://www.a.com/apis/',
-            'resources' : siteUrl + 'statac-dev/resources/',
+            'apiUrl': 'http://www.a.com/apis/',
+            'resources': siteUrl + 'statac-dev/resources/',
             'component': siteUrl + 'statac-dev/component/',
         },
         base: "../statac-dev/",
         preload: ["$", "backbone", "underscore"],
         'map': [
-            [/^(.*\.(?:css|js|tpl))(.*)$/i, '$1?v='+Math.random()]
+            [/^(.*\.(?:css|js|tpl))(.*)$/i, '$1?v=' + Math.random()]
         ],
         alias: {
             "$": siteUrl + "statac-dev/component/zepto/zepto.js",
