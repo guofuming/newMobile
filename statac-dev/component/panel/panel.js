@@ -4,6 +4,12 @@ define(function(require, exports, module) {
         userInfo,
         mId = 'panel';
 
+    $(window).on('resize',function(){
+        if(controller.status != 'hide'){
+            controller.resetCss();
+        }
+    })
+
     controller = {
 
         status : 'hide',
@@ -24,8 +30,16 @@ define(function(require, exports, module) {
                 tthis.tabSwitch(dom.find('.tab_wrapper'), index);
             });
 
+            dom.find('.portrait').on('tap', function() {
+                window.location.href = '#myProfile/whole';
+            });
+
             dom.find('.panel_cover').on('tap', function() {
                 tthis.toggle();
+            });
+
+            dom.find('.upgrade').on('tap', function() {
+                window.location.href = '#upgrade/whole';
             });
         },
 
@@ -35,38 +49,44 @@ define(function(require, exports, module) {
                 winWidth = $(window).width(),
                 domWidth = dom.find('.panel_left').width();
             if(this.status == 'hide'){
-                domCur.css({'width':'100%'});
+                $('.g-doc').css({'width':'100%'});
                 dom.off('touchmove');
+                setTimeout(function(){
+                    domCur.css({'overflow-x':'visible'});
+                },200);
                 // domCur.children().css({'width':'100%'});
             }else{
                 dom.on('touchmove',function(e){
                     e.stopPropagation();
                     e.preventDefault();
                 });
-                domCur.css({'width': winWidth - domWidth + 'px'});
-                domCur.css({'overflow-x':'hidden'});
+                domCur.css({'width': winWidth - domWidth + 'px','overflow-x':'hidden'});
                 domCur.children().css({'width': winWidth + 'px'});
             }
-
-            
-
         },
-
-        toggle:function(){
-            var dom = $('#' + mId);
-            if(this.status == 'hide'){
-                this.status = 'show';
-                $('html').addClass('panelShow');
-                dom.find('.panel_cover').show();
-                setTimeout(function(){
-                    dom.find('.panel_cover').css({'display':'block','opacity':'1'});
-                },200);
-            }else{
-                this.status = 'hide';
-                $('html').removeClass('panelShow');
-                dom.find('.panel_cover').css({'display':'none','opacity':'0'});
-            }
+        hide:function(){
+            $('#'+ seajs.moduleUI).show();
+            this.status = 'hide';
+            $('html').removeClass('panelShow');
+            $('#' + mId).find('.panel_cover').css({'display':'none','opacity':'0'});
             this.resetCss();
+        },
+        show:function(){
+            var dom = $('#' + mId);
+            this.status = 'show';
+            $('html').addClass('panelShow');
+            dom.find('.panel_cover').show();
+            setTimeout(function(){
+                dom.find('.panel_cover').css({'display':'block','opacity':'1'});
+            },300);
+            this.resetCss();
+        },
+        toggle:function(){
+            if(this.status == 'hide'){
+                this.show();
+            }else{
+                this.hide();
+            }
         }, 
 
     }

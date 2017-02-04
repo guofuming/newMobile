@@ -1,5 +1,7 @@
 define(function(require, exports, module) {
 
+    var panel = require('{component}panel/panel');
+
     var routers = Backbone.Router.extend({
 
         initialize: function(options) {

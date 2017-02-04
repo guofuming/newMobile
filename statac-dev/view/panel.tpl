@@ -2,7 +2,7 @@
     <div class="panel_left">
         <div class="head">
             <dl>
-                <dt><img src="<%= photo.picture %>" alt=""></dt>
+                <dt class="portrait"><img src="<%= photo.picture %>" alt=""></dt>
                 <dd><%= account.username %></dd>
             </dl>
         </div>

@@ -45,8 +45,8 @@ define(function(require, exports, module) {
 
     share.loadPage = function(dom, bool) {
         var html = "<div id='loading'>" +
-            "<div class='u-load'></div>" +
-            "<div class='u-loadBg'></div>" +
+            "<div class='load'></div>" +
+            "<div class='loadBg'></div>" +
             "</div>";
         $('#loading').remove();
         if (bool || bool === undefined) {

@@ -2,10 +2,10 @@ define(function(require, exports, module) {
 
     var controller,
         userInfo,
-        mId = 'myProfile',
+        mId = 'upgrade',
         panel = require('{component}panel/panel'),
         tplPanel = require('view/panel.tpl'),
-        tpl = require('view/myProfile.tpl');
+        tpl = require('view/upgrade.tpl');
 
     controller = {
 
@@ -34,13 +34,9 @@ define(function(require, exports, module) {
                 tthis.tabSwitch(dom.find('.tab_wrapper'),index);
         	});
 
-            dom.find('.left').on('tap', function(){
+            dom.find('.left').on('click', function(){
                 // $(this).css('background','red')
                 panel.toggle();
-            });
-
-            dom.find('.upgrade').on('tap' ,function(){
-                window.location.href = '#upgrade/whole';
             });
 
         },
