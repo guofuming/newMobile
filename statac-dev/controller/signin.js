@@ -29,13 +29,13 @@ define(function(require, exports, module) {
             dom.find('input[name=password]').val('12345678');
 
             dom.find('button').on('tap', function() {
-                share.btnLoading($(this));
-                var obj = {
-                    username: dom.find('input[name=username]').val(),
-                    password: dom.find('input[name=password]').val(),
-                    confirm_number: dom.find('input[name=validaNum]').val()
-                };
-                tthis.login(obj);
+                tthis.login();
+            });
+
+            dom.find('input[name=validaNum]').on('keyup', function(e) {
+                if(e.keyCode == 13){
+                    tthis.login();
+                }
             });
 
         },
@@ -54,9 +54,17 @@ define(function(require, exports, module) {
             });
         },
         
-        login: function(obj) {
+        login: function() {
             var tthis = this, 
                 dom = $('#' + mId);
+
+            share.btnLoading(dom.find('button'));
+            
+            var obj = {
+                username: dom.find('input[name=username]').val(),
+                password: dom.find('input[name=password]').val(),
+                confirm_number: dom.find('input[name=validaNum]').val()
+            };
 
             var ajaxObj = {
                 url: seajs.data.vars.apiUrl + "login",

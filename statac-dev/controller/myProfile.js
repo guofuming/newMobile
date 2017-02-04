@@ -15,7 +15,6 @@ define(function(require, exports, module) {
         render: function(obj) {
             var userInfo = share.userInfo();
             panel.render(this.templatePanel);
-            
 
             if (share.isDom($('#' + mId))) {
                 $('#' + mId).css('display', 'block');

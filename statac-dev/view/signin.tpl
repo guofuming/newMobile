@@ -8,7 +8,7 @@
         <input class="u-input" placeholder="Username or email" type="text" name="username">
         <input class="u-input" placeholder="Password" type="password" name="password">
         <div class="f-cb f-dn validation">
-            <input maxlength="3" placeholder="Verify Code" class="u-input" type="text" name="validaNum">
+            <input maxlength="3" placeholder="Verify Code" class="u-input" type="number" name="validaNum">
             <div class="img_box loading">
                 <img src="<%= seajs.data.vars.resources%>img/max_loading.gif" alt="">
             </div>

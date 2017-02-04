@@ -106,10 +106,6 @@ textarea::-webkit-input-placeholder {
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
-html,
-body {
-  overflow-x: hidden;
-}
 html {
   font: 100px/1.5 Helvetica, Tahoma, Arial, sans-serif;
   width: 100%;
@@ -289,21 +285,31 @@ body {
 }
 /*工具*/
 /**与js相关的用样式挂上id**/
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+html.panelShow #panel {
+  left: 0;
+}
+html.panelShow .g-doc,
+html.panelShow .g-hd {
+  left: 260px;
+}
 /***************************************************/
 /* 结构布局样式*/
 /* 全局和通用样式*/
 .g-doc {
-  position: relative;
+  position: absolute;
+  z-index: 1;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   background: inherit;
   transition: all .3s ease;
-}
-.g-doc.show {
-  left: 260px;
-}
-.g-doc.show .g-hd {
-  left: 260px;
 }
 .g-bd {
   color: #999;
@@ -353,20 +359,20 @@ body {
   transition: all .3s ease;
   position: fixed;
   z-index: 999;
-  left: -260px;
+  left: -100%;
   top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+#panel .panel_left {
+  float: left;
   width: 260px;
   height: 100%;
   box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.05), inset 0 -2px 0 #F6F7F9, inset 0 2px 0 #F6F7F9, inset 2px 0 0 #F6F7F9;
 }
-#panel.show {
-  left: 0;
-}
 #panel .panel_cover {
-  position: fixed;
-  z-index: 999;
-  top: 0;
-  left: 260px;
+  float: right;
   width: calc(100vw - 260px);
   height: 100%;
   background: rgba(0, 0, 0, 0.2);
@@ -415,6 +421,9 @@ body {
   height: 44px;
   line-height: 44px;
   padding: 0 20px;
+}
+#panel .panel_list li:active {
+  background-color: #e3e3e3;
 }
 #panel .panel_list li.upgrade {
   background-color: #3FAFE4;
@@ -511,7 +520,7 @@ body {
   /*end  css3 button */
 }
 #signin .g-bd {
-  padding-top: 64px;
+  padding-top: 24px;
   padding-left: .2rem;
   padding-right: .2rem;
   padding-bottom: .2rem;

@@ -29,24 +29,45 @@ define(function(require, exports, module) {
             });
         },
 
+        resetCss:function(){
+            var dom = $('#' + mId),
+                domCur = $('#'+seajs.moduleUI),
+                winWidth = $(window).width(),
+                domWidth = dom.find('.panel_left').width();
+            if(this.status == 'hide'){
+                domCur.css({'width':'100%'});
+                dom.off('touchmove');
+                // domCur.children().css({'width':'100%'});
+            }else{
+                dom.on('touchmove',function(e){
+                    e.stopPropagation();
+                    e.preventDefault();
+                });
+                domCur.css({'width': winWidth - domWidth + 'px'});
+                domCur.css({'overflow-x':'hidden'});
+                domCur.children().css({'width': winWidth + 'px'});
+            }
+
+            
+
+        },
+
         toggle:function(){
             var dom = $('#' + mId);
-
-            if(this.status == 'show'){
-                this.status = 'hide';
-                dom.removeClass('show');
-                $('#' +  seajs.moduleUI).removeClass('show');
-                dom.find('.panel_cover').css({'display':'none','opacity':'0'});
-            }else{
+            if(this.status == 'hide'){
                 this.status = 'show';
-                dom.addClass('show');
-                $('#' +  seajs.moduleUI).addClass('show');
+                $('html').addClass('panelShow');
                 dom.find('.panel_cover').show();
                 setTimeout(function(){
                     dom.find('.panel_cover').css({'display':'block','opacity':'1'});
-                },200)
+                },200);
+            }else{
+                this.status = 'hide';
+                $('html').removeClass('panelShow');
+                dom.find('.panel_cover').css({'display':'none','opacity':'0'});
             }
-        }
+            this.resetCss();
+        }, 
 
     }
     module.exports = controller;
