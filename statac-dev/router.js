@@ -24,16 +24,20 @@ define(function(require, exports, module) {
         loadPage: function(obj) {
             var url = siteUrl + 'statac-dev/controller/'+obj.name;
             share.loadPage($('body'));
-            $('.g-doc').hide();
-            // console.log(url)
             require.async(url, function(module) {
                 if (module) {
-                    seajs.moduleUI = obj.name;
+                    $('.g-doc').hide();
+                    seajs.lastModule = seajs.curModule;
+                    seajs.curModule = obj.name;
                     module.render(obj);
                     share.loadPage($('body'),false);
+                    panel.hide();
+                    if(seajs.lastModule){
+                        share.blur(seajs.lastModule);
+                    }
                 } else {
-                    // alert('Loading failed. Please refresh and try again!');
                     console.log('Loading failed. Please refresh and try again!');
+                    window.location.href = '#page404/whole'; 
                 }
             });
         }

@@ -2,6 +2,48 @@ define(function(require, exports, module) {
 
     var share = {};
 
+
+    share.panelList = [
+        { class:'upgrade', text:'Upgrade', url:'upgrade'},
+        { class:'activity', text:'Activities', url:'activity'},
+        { class:'search', text:'Search', url:'search'},
+        { class:'letsMeet', text:'Let\'s Meet', url:'letsMeet'},
+        { class:'emails', text:'Emails / Winks', url:'emails'},
+        // { class:'LiveChat', text:'Live Chat', url:'letsMeet'},
+        { class:'connections', text:'Connections', url:'connections'},
+        { class:'Blogs', text:'Blogs', url:'Blogs'},
+        { class:'forums', text:'forums', url:'forums'},
+        { class:'Feedback', text:'Feedback', url:'Feedback'},
+        { class:'setting', text:'Settings & Help', url:'setting'},
+    ];
+
+    share.tabSwitch = function(dom,index){
+        var domTitle = dom.find('.tab_title'),
+            domContent = dom.find('.tab_content_box');
+        domTitle.find('li').removeClass('selected');
+        domTitle.find('li').eq(index).addClass('selected');
+        domContent.find('.tab_content').hide();
+        domContent.find('.tab_content').eq(index).show().addClass('selected');
+    };
+
+    share.blur = function(mId){
+        var dom = $('#' + mId);
+        dom.find('input,select,textarea').blur();
+    };
+
+    share.checkPermissions = function(){
+        var bool,
+            userInfo = share.userInfo();
+        if(!userInfo){
+            $('.g-doc').remove();
+            window.location.href = '#index/whole';
+            bool = false;
+        }else{
+            bool = true;
+        }
+        return bool;
+    };
+
     share.formGender = function(val){
         var str;
         if(parseInt(val) == 1){
@@ -68,8 +110,11 @@ define(function(require, exports, module) {
         var newImg = new Image();
         newImg.src = url;
         newImg.onload = function() {
-            callback && callback();
+            callback && callback(this);
         };
+        newImg.error = function(){
+            alert('chucuo img')
+        }
     };
 
     share.ajaxControl = function(obj) {

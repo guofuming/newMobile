@@ -78,22 +78,21 @@ define(function(require, exports, module) {
             if (cacheObj[obj.name]) {
                 //console.log('initialize',cacheObj[obj.name].initialize); 
                 cacheObj[obj.name].render(obj);
-                seajs.moduleUI = obj.name;
+                seajs.curModule = obj.name;
             } else {
                 share.pageLoad(true, $('body'));
-                seajs.moduleUI = '';
+                seajs.curModule = '';
                 require.async(share.getModulePath(obj.name), function(module) {
                     if (module) {
                         //IOS,BUG
                         $('.page').css('display', 'none');
                         share.pageLoad(false, $('body'));
-                        seajs.moduleUI = obj.name;
+                        seajs.curModule = obj.name;
                         module.render(obj);
                         cacheObj[obj.name] = module;
                     } else {
-                        alert('Loading failed. Please refresh and try again!');
-                        //console.log('router error',share.getModulePath(obj.name));
-                        //window.location.href = '#index/whole'; 
+                        console.log('Loading failed. Please refresh and try again!');
+                        window.location.href = '#404/whole'; 
                     }
                 });
             }

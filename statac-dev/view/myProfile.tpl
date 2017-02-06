@@ -34,7 +34,7 @@
                 </ul>
             </div>
             <div class="tab_content_box">
-                <div class="  tab_content">
+                <div class="selected tab_content">
                     <div class="album_box public_album">
                         <h3><span class="title">Public</span>
                             <% if(pictures.length){%>
@@ -68,7 +68,7 @@
                         </dl> -->
                     </div>
                 </div>
-                <div class="selected tab_content tab_content_about">
+                <div class="tab_content tab_content_about">
                     <ul>
                         <li>
                             <div class="title"><b> Headline </b><span url="editHeadline" class="edit"></span></div>

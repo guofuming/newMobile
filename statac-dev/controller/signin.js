@@ -32,12 +32,16 @@ define(function(require, exports, module) {
                 tthis.login();
             });
 
+            dom.find('.img_box').on('tap', function() {
+                tthis.refreshNum();
+            });
+
             dom.find('input[name=validaNum]').on('keyup', function(e) {
                 if(e.keyCode == 13){
+                    share.blur(mId);
                     tthis.login();
                 }
             });
-
         },
         
         refreshNum :function(){
@@ -47,16 +51,18 @@ define(function(require, exports, module) {
                 imgUrl = seajs.data.vars.apiUrl + 'show_captcha_url?username='+ dom.find('input[name=username]').val() + '&r='+Math.random();
             domValidation.show();
             domValidation.find('.img_box').addClass('loading');
-            domValidation.find('img').attr('src',seajs.data.vars.resources + 'img/max_loading.gif');
-            share.imgLoad(imgUrl,function(){
+            domValidation.find('.img_box').empty();
+            share.imgLoad(imgUrl,function(img){
                 domValidation.find('.img_box').removeClass('loading');
-                domValidation.find('img').attr('src',imgUrl);
+                domValidation.find('.img_box').html(img);
             });
         },
         
         login: function() {
             var tthis = this, 
                 dom = $('#' + mId);
+
+            dom.find('.err').empty();
 
             share.btnLoading(dom.find('button'));
             
@@ -71,13 +77,14 @@ define(function(require, exports, module) {
                 type: 'POST',
                 data: obj,
                 success: function(data) {
-                    console.log(data);
                     if(data.errcode == undefined){
+                        share.setStorage('session_id',data.session_id);
+                        seajs.data.vars.apiAccessUrl = seajs.data.vars.apiUrl + 's' + data.session_id + '/';
                         share.cacheLoadUser(data);
                         window.location.href = '#myProfile/whole';
-                    }
-                    if (data.errcode == 110 || data.errcode == 102) {
+                    }else if (data.errcode == 110 || data.errcode == 102) {
                         tthis.refreshNum();
+                        dom.find('.err').text(data.errmsg);
                     }
                     share.btnLoading(dom.find('.btn_loading'),false);
                 }

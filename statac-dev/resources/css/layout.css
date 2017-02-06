@@ -308,14 +308,14 @@ html.panelShow .g-hd {
   left: 0;
   width: 100%;
   background: inherit;
-  transition: all .3s ease;
+  transition: all .2s ease;
 }
 .g-bd {
   color: #999;
   margin-top: 44px;
 }
 .g-hd {
-  transition: all .3s ease;
+  transition: all .2s ease;
   position: fixed;
   left: 0;
   top: 0;
@@ -351,10 +351,11 @@ html.panelShow .g-hd {
   text-align: center;
   color: #fff;
   font-size: .2rem;
+  text-transform: capitalize;
 }
 /***************************************************/
 #panel {
-  transition: all .28s ease;
+  transition: left 0.2s ease;
   position: fixed;
   z-index: 999;
   left: -100%;
@@ -373,9 +374,8 @@ html.panelShow .g-hd {
   float: right;
   width: calc(100vw - 260px);
   height: 100%;
-  background: rgba(0, 0, 0, 0.1);
   display: none;
-  transition: all .3s ease;
+  transition: all .2s ease;
   opacity: 0;
 }
 #panel .head {
@@ -420,7 +420,8 @@ html.panelShow .g-hd {
   line-height: 44px;
   padding: 0 20px;
 }
-#panel .panel_list li:active {
+#panel .panel_list li:active,
+#panel .panel_list li.selected {
   background-color: #e3e3e3;
 }
 #panel .panel_list li.upgrade {
@@ -430,7 +431,7 @@ html.panelShow .g-hd {
 #panel .panel_list li.upgrade i {
   background: url('../img/icons-search.png') no-repeat -15px 2px;
 }
-#panel .panel_list li.activities i {
+#panel .panel_list li.activity i {
   background: url('../img/icons-search.png') no-repeat 3px -525px;
   background-size: 70px auto!important;
 }
@@ -517,6 +518,11 @@ html.panelShow .g-hd {
   /* css3 button */
   /*end  css3 button */
 }
+#signin .err {
+  color: red;
+  line-height: 28px;
+  text-indent: 4px;
+}
 #signin .g-bd {
   padding-top: 24px;
   padding-left: .2rem;
@@ -541,11 +547,8 @@ html.panelShow .g-hd {
 #signin .validation .img_box.loading {
   border: 1px solid #ccc;
   text-align: center;
-}
-#signin .validation .img_box.loading img {
-  width: 24px;
-  height: 24px;
-  margin-top: 10px;
+  background: #fff url('../img/max_loading.gif') no-repeat center;
+  background-size: 25px;
 }
 #signin .validation .img_box img {
   width: 100%;
@@ -990,6 +993,48 @@ html.panelShow .g-hd {
   border-bottom: 1px solid #e2e2e2;
 }
 /********upgrade end********/
+#setting .g-bd {
+  color: #000;
+}
+#setting li {
+  width: 100%;
+  float: left;
+  font-size: 15px;
+  line-height: 24px;
+  padding: 0 14px;
+}
+#setting li div {
+  border-bottom: 1px dotted #dcdfe3;
+  padding: 16px 1px;
+}
+#setting li.logout span {
+  float: right;
+}
+#setting li:active {
+  background-color: #e3e3e3;
+}
+#setting .aboutInfo {
+  clear: both;
+  text-align: center;
+  padding: 26px 10px;
+}
+#page404 {
+  height: 100%;
+}
+#page404 .g-bd {
+  height: calc(100% - 44px);
+  background-color: #f3f3f3;
+}
+#page404 p {
+  font-size: 16px;
+  text-align: center;
+  padding: 20px 0;
+  height: 100%;
+  color: #999;
+  background: url('../img/bg404.jpg') no-repeat center;
+  background-size: 320px;
+  opacity: .8;
+}
 /* media */
 /* 横屏 */
 @media screen and (orientation: landscape) {

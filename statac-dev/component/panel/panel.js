@@ -5,9 +5,11 @@ define(function(require, exports, module) {
         mId = 'panel';
 
     $(window).on('resize',function(){
-        if(controller.status != 'hide'){
+        // if(controller.status == 'hide'){
+
+        // }else{
             controller.resetCss();
-        }
+        // }
     })
 
     controller = {
@@ -18,59 +20,80 @@ define(function(require, exports, module) {
             if (share.isDom($('#' + mId))) {
                 $('#' + mId).css('display', 'block');
             } else {
-                $('body').append(tpl(userInfo));
+                $('body').append(tpl({'userInfo':userInfo,'panelList':share.panelList}));
                 this.bindEvt();
             }
         },
         bindEvt: function() {
             var tthis = this,
                 dom = $('#' + mId);
+
             dom.find('.tab_title li').on('tap', function() {
                 var index = $(this).index();
                 tthis.tabSwitch(dom.find('.tab_wrapper'), index);
             });
 
             dom.find('.portrait').on('tap', function() {
-                window.location.href = '#myProfile/whole';
+                var url = 'myProfile';
+                if(url == seajs.curModule){
+                    tthis.hide();
+                    return;
+                }
+                window.location.href = '#'+ url +'/whole';
             });
 
             dom.find('.panel_cover').on('tap', function() {
                 tthis.toggle();
             });
 
-            dom.find('.upgrade').on('tap', function() {
-                window.location.href = '#upgrade/whole';
+            dom.find('li').on('tap', function() {
+                var url = $(this).attr('url');
+                // dom.find('li').removeClass('selected');
+                // $(this).addClass('selected');
+                if(url){
+                    if(url == seajs.curModule){
+                        tthis.hide();
+                        return;
+                    }
+                    window.location.href = '#'+ url +'/whole';
+                }
             });
         },
 
         resetCss:function(){
             var dom = $('#' + mId),
-                domCur = $('#'+seajs.moduleUI),
-                winWidth = $(window).width(),
-                domWidth = dom.find('.panel_left').width();
+                domCur = $('#'+seajs.curModule),
+                winWidth = $(window).width();
             if(this.status == 'hide'){
                 $('.g-doc').css({'width':'100%'});
                 dom.off('touchmove');
                 setTimeout(function(){
                     domCur.css({'overflow-x':'visible'});
+                    domCur.children().css({'width':'100%'});
                 },200);
-                // domCur.children().css({'width':'100%'});
             }else{
                 dom.on('touchmove',function(e){
                     e.stopPropagation();
                     e.preventDefault();
                 });
-                domCur.css({'width': winWidth - domWidth + 'px','overflow-x':'hidden'});
+                domCur.css({'width': winWidth - dom.find('.panel_left').width() + 'px','overflow-x':'hidden'});
                 domCur.children().css({'width': winWidth + 'px'});
             }
         },
+
         hide:function(){
-            $('#'+ seajs.moduleUI).show();
+            // transition: all .3s linear;
             this.status = 'hide';
+
+            $('#' + mId).find('li').removeClass('selected');
+            $('#' + mId).find('li.' + seajs.curModule).addClass('selected');
+
+            $('#'+ seajs.curModule).show();
             $('html').removeClass('panelShow');
             $('#' + mId).find('.panel_cover').css({'display':'none','opacity':'0'});
             this.resetCss();
         },
+
         show:function(){
             var dom = $('#' + mId);
             this.status = 'show';
@@ -78,15 +101,12 @@ define(function(require, exports, module) {
             dom.find('.panel_cover').show();
             setTimeout(function(){
                 dom.find('.panel_cover').css({'display':'block','opacity':'1'});
-            },300);
+            },200);
             this.resetCss();
         },
+
         toggle:function(){
-            if(this.status == 'hide'){
-                this.show();
-            }else{
-                this.hide();
-            }
+            this.status == 'hide' ? this.show() : this.hide();
         }, 
 
     }

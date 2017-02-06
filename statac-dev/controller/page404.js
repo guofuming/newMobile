@@ -1,50 +1,46 @@
 define(function(require, exports, module) {
 
     var controller,
-        userInfo,
-        mId = 'upgrade',
+        mId = 'page404',
         panel = require('{component}panel/panel'),
         tplPanel = require('view/panel.tpl'),
-        tpl = require('view/upgrade.tpl');
+        tpl = require('view/page404.tpl'),
 
     controller = {
 
         template: _.template(tpl),
         templatePanel: _.template(tplPanel),
-        
+
         render: function(obj) {
             if(!share.checkPermissions()){ return; };
-            
-            var userInfo = share.userInfo();
             panel.render(this.templatePanel);
 
             if (share.isDom($('#' + mId))) {
                 $('#' + mId).css('display', 'block');
             } else {
-                $('body').append(this.template(userInfo));
+                $('body').append(this.template());
                 this.bindEvt();
             }
-            // panel.toggle();
         },
 
         bindEvt: function() {
-            var tthis= this;
-        	var dom = $('#' + mId);
-        	dom.find('.tab_title li').on('tap' ,function(){
-                var index = $(this).index();
-                tthis.tabSwitch(dom.find('.tab_wrapper'),index);
-        	});
+            var tthis = this,
+                dom = $('#' + mId);
 
             dom.find('.left').on('tap', function(){
                 panel.toggle();
             });
 
-            dom.find('.optionLineBox').on('tap', function(){
-                dom.find('.optionLineBox').removeClass('selected');
-                $(this).addClass('selected');
-            })
+            dom.find('p').on('tap', function(){
+                if(seajs.lastModule){
+                    window.location.href = '#'+ seajs.lastModule +'/whole';
+                }
+            });
+
+           
 
         },
+
     }
     module.exports = controller;
 })

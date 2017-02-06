@@ -54,12 +54,13 @@
     }
     </style>
     <script type="text/javascript">
-    var siteUrl = 'http://www.test.com/test/git/newMobile/'
+    var siteUrl = 'http://www.test.com/test/git/newMobile/';
     seajs.config({
         vars: {
             'apiUrl': 'http://www.a.com/apis/',
             'resources': siteUrl + 'statac-dev/resources/',
             'component': siteUrl + 'statac-dev/component/',
+
         },
         base: "../statac-dev/",
         preload: ["$", "backbone", "underscore"],

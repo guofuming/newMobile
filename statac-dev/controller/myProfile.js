@@ -13,6 +13,8 @@ define(function(require, exports, module) {
         templatePanel: _.template(tplPanel),
         
         render: function(obj) {
+            if(!share.checkPermissions()){ return; };
+
             var userInfo = share.userInfo();
             panel.render(this.templatePanel);
 
@@ -22,27 +24,23 @@ define(function(require, exports, module) {
                 $('body').append(this.template(userInfo));
                 this.bindEvt();
             }
-            panel.hide();
-            // panel.toggle();
         },
 
         bindEvt: function() {
-            var tthis= this;
-        	var dom = $('#' + mId);
+            var tthis= this,
+                dom = $('#' + mId);
         	dom.find('.tab_title li').on('tap' ,function(){
                 var index = $(this).index();
-                tthis.tabSwitch(dom.find('.tab_wrapper'),index);
+                share.tabSwitch(dom.find('.tab_wrapper'),index);
         	});
 
             dom.find('.left').on('tap', function(){
-                // $(this).css('background','red')
                 panel.toggle();
             });
 
             dom.find('.upgrade').on('tap' ,function(){
                 window.location.href = '#upgrade/whole';
             });
-
         },
 
         formData:function(data){
@@ -52,15 +50,6 @@ define(function(require, exports, module) {
             obj.private_pictures = data.private_pictures;
             return obj;
         },
-
-        tabSwitch:function(dom,index){
-            var domTitle = dom.find('.tab_title');
-            var domContent = dom.find('.tab_content_box');
-            domTitle.find('li').removeClass('selected');
-            domTitle.find('li').eq(index).addClass('selected');
-            domContent.find('.tab_content').hide();
-            domContent.find('.tab_content').eq(index).show().addClass('selected');
-        }
     }
     module.exports = controller;
 })
