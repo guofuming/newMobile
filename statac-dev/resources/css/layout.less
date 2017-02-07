@@ -577,6 +577,81 @@ html.panelShow{
         opacity: .8;
     }
 }
+
+
+#activity{
+    ul{
+        padding-top: 10px;
+    }
+}
+
+
+#activity li{margin:9px 9px 0 9px;overflow:hidden;border:1px solid #dddddd;background:#fff;overflow:hidden;border-radius:3px;}
+#activity .userInfo{margin:10px;overflow:hidden;position:relative;min-height:40px;}
+#activity .icon{position:absolute;left:0;top:0;height:40px;width:40px;overflow:hidden;border-radius:50%;overflow:hidden;background:url(../img/default_avatar1.png) no-repeat!important;background-size:40px 40px!important;}
+#activity .icon label{height:40px;width:40px;display:block;}
+#activity .icon label img{ width: 100%;}
+#activity .updateInfo{margin:0 0 0 49px;overflow:hidden;}
+#activity .updateInfo .name{margin:0;padding:0;font-size:15px;color:#49494a;font-weight:100;line-height:20px;text-align:left;overflow:hidden;}
+#activity .updateInfo .des{font-size:11px;line-height:20px;text-align:left;overflow:hidden;color:#999999;}
+#activity .updateInfo .right{position:absolute;right:5px;top:0px;}
+#activity .photo .photoLi{padding:0;margin:0 10px 0 10px;text-align:center;}
+#activity .photo .photoLi img{display:block;margin:auto;max-width:100%;}
+#activity .photo .photoLi .handle,#activity .text .handle{margin:4px -10px 0 -10px;overflow:hidden;height:30px;}
+#activity .photo .photoLi .handle ul,#activity .text .handle ul{overflow:hidden;position:relative;padding-right:10px;}
+#activity .photo .photoLi .handle ul li,#activity .text .handle ul li{margin:0 0 0 28px;overflow:hidden;border:0;background:#fff;border-radius:0;float:right;width:auto;height:30px;}
+#activity .photo .photoLi .handle ul li div,#activity .text .handle ul li div{height:30px;line-height:30px;text-align:center;color:#777777;font-size:11px;}
+#activity .photo .photoLi .handle span.ico_like,#activity .text span.ico_like{padding:8px 10px 5px 10px;margin-right:4px;}
+#activity .photo .photoLi .handle span.ico_like_no,#activity .text span.ico_like_no{padding:8px 10px 5px 10px;margin-right:4px;background:url(../img/ico_likeA_no.png) center no-repeat;background-size:16px auto;}
+#activity .photo .photoLi .handle span.ico_comment,#activity .text .handle span.ico_comment{padding:5px 10px 4px 10px;margin-right:4px;background:url(../img/ico_commentA.png) center no-repeat;background-size:17px auto;}
+#activity .activityList .photoList{overflow:hidden;}
+#activity li .text{margin:0 10px 0 10px;font-size:11px;line-height:20px;text-align:left;color:#999999;}
+#activity li .text .detailDes{color:#333333;font-size:14px;}
+#activity .menuA{height:37px;border-bottom:1px solid #d8d8d8;}
+#activity .photoList .photoTitle{display:none;}
+#activity .menuA span{width:50%;float:left;height:36px;color:#878385;}
+#activity .menuA span div{margin-top:7px;height:22px;line-height:22px;font-size:13px;text-align:center;text-shadow:0 1px 1px #fff;border-right:1px solid #cccccc;}
+#activity .menuA span:last-child div{border-right:0;}
+
+/*modify end*/
+#activity .photo img{border-radius:2px;}
+#activity .box_add{width:100%;height:5000px;position:absolute;top:0px;display:none;overflow:hidden;}
+#activity .box_add .opebox{width:100px;margin:auto;overflow:hidden;position:relative;top:calc(50vh - 150px);bottom:0;right:0;left:0;height:300px;}
+#activity .box_add span{float:left;margin-top:40px;display:block;webkit-border-radius:15px;-moz-border-radius:15px;border-radius:15px;width:100px;height:35px;padding-top:55px;text-align:center;font-size:12px;line-height:18px;}
+@media screen and (orientation:landscape){
+    #activity .box_add .opebox{width:245px;margin:auto;height:100px;top:calc(50vh - 50px);}
+    #activity .box_add span{margin-top:0;}
+    #activity .box_add .photo{margin-right:45px;}
+}
+#activity #activityUploadPhoto{width:100px;height:100px;border-radius:50%;opacity:0;}
+#activity .uploading{position:absolute;left:0;right:0;top:0;bottom:0;width:100px;height:100px;margin:auto;}
+#activity .likerInfoy,#activity ul.likerInfo.empty{display:none}
+#activity .likerInfo{overflow:hidden;width:100%;height:42px;}
+#activity .likerInfo li{border:0;float:left;margin:5px;}
+#activity .likerInfo li.likeIcon{width:25px;height:25px;background:url(../img/ico_likeA_no.png) center no-repeat #ededed;background-size:16px auto;margin-top:8px;}
+#activity .likerInfo li img{height:32px;width:32px;border-radius:50%;vertical-align:bottom;}
+#activity .commentList{overflow:hidden;margin:0 -10px 0 -10px;border-top:1px solid #f0f0f0;}
+#activity .commentList li{margin:0;position:relative;overflow:hidden;border:0;border-bottom:1px solid #f0f0f0;padding:10px;min-height:30px;}
+#activity .commentList li:last-child{border-bottom:0;}
+#activity .commentList li.viewAll{text-align:right;font-size:14px;color:#999999;padding:0 10px 0 10px;height:43px;line-height:43px;}
+#activity .commentList li label{width:30px;height:30px;overflow:hidden;position:absolute;left:10px;top:10px;border-radius:50%;background:#ccc url(../img/default_avatar1.png) no-repeat center center;background-size:30px 30px;}
+#activity .commentList li .info{margin:0 10px 0 50px;line-height:28px;overflow:hidden;font-size:14px;}
+#activity .commentList li .info .name{color:#999999;height:20px;line-height:20px;}
+#activity .commentList li .info .name span.hyperlink{font-size:14px;text-decoration:none;float:left;max-width:180px;height:20px;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;-moz-binding:url('ellipsis.xml#ellipsis');overflow:hidden;}
+#activity .commentList li .info .name span.right{float:right;font-size:9px;}
+#activity .commentList li .words{margin-top:3px;font-size:12px;line-height:17px;text-align:left;color:#666666;overflow:hidden;text-overflow:ellipsis;}
+#activity .head .menuSpan{padding-right:20px;background-size:12px auto;background-position:right center;background-repeat:no-repeat;}
+
+#activity .head .menubox{overflow:hidden;background:#fff;box-shadow:0 3px 10px #ccc;display:none;}
+#activity .head .menubox dd{font-size:15px;display:block;height:46px;color:#999;line-height:46px;margin:0;border-bottom:1px solid #ccc;}
+#activity .head .menubox dd:last-child{border-bottom:0;}
+
+/********activity end********/
+
+
+
+
+
 //皮肤
 @import "skin";
 // 设备样式

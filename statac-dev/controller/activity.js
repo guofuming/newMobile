@@ -10,10 +10,12 @@ define(function(require, exports, module) {
         panel = require('{component}panel/panel'),
         tplPanel = require('view/panel.tpl'),
         tpl = require('view/activity.tpl'),
+        tplLi = require('view/activityLi.tpl'),
 
     controller = {
 
         template: _.template(tpl),
+        templateLi: _.template(tplLi),
         templatePanel: _.template(tplPanel),
 
         render: function(obj) {
@@ -48,14 +50,21 @@ define(function(require, exports, module) {
         },
 
         ajaxList:function(){
+            var tthis = this;
             // page_num=0&offset=20&activity_time=2d
-            console.log(seajs.data.vars.apiAccessUrl)
+
+            share.loadList($('#' + mId).find('.date_list'));
             var ajaxObj = {
                 url: seajs.data.vars.apiAccessUrl + "activity",
                 type: 'POST',
                 data: ajaxPage,
                 success: function(data) {
-                    console.log(data);
+                    share.loadList($('#' + mId).find('.date_list'),false);
+                    if(data.errcode == undefined){
+                        $('#'+ mId).find('ul').append(tthis.templateLi({arr:data.res}));
+                    }else{
+                        alert(data.errmsg);
+                    }
                 }
             }
             $.ajax(share.ajaxControl(ajaxObj));

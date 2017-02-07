@@ -96,6 +96,26 @@ define(function(require, exports, module) {
         }
     };
 
+    share.loadList = function(domWrapper,bool){
+        var html = '<div class="u-loadList"></div>';
+        if(bool || bool == undefined){
+            domWrapper.append(html);
+        }else{
+            domWrapper.find('.u-loadList').remove();
+        }
+    };
+
+    share.loadPage = function(dom, bool) {
+        var html = "<div id='loading'>" +
+            "<div class='load'></div>" +
+            "<div class='loadBg'></div>" +
+            "</div>";
+        $('#loading').remove();
+        if (bool || bool === undefined) {
+            dom.append(html);
+        }
+    };
+
     share.ajax = function(obj) {
         $.ajax({
             url: "test.html",
