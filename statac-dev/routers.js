@@ -68,35 +68,7 @@ define(function(require, exports, module) {
             this.dispatcher(obj);
         },
 
-        dispatcher: function(obj) {
-            share.pageLoad(false, $('body'));
-            this.routesDoFuncBefore(obj);
-            if (typeof(ga) !== 'undefined') {
-                ga('send', 'event', 'module', obj.name, { 'page': obj.name });
-            }
-
-            if (cacheObj[obj.name]) {
-                //console.log('initialize',cacheObj[obj.name].initialize); 
-                cacheObj[obj.name].render(obj);
-                seajs.curModule = obj.name;
-            } else {
-                share.pageLoad(true, $('body'));
-                seajs.curModule = '';
-                require.async(share.getModulePath(obj.name), function(module) {
-                    if (module) {
-                        //IOS,BUG
-                        $('.page').css('display', 'none');
-                        share.pageLoad(false, $('body'));
-                        seajs.curModule = obj.name;
-                        module.render(obj);
-                        cacheObj[obj.name] = module;
-                    } else {
-                        console.log('Loading failed. Please refresh and try again!');
-                        window.location.href = '#404/whole'; 
-                    }
-                });
-            }
-        },
+        
 
         routesDoFuncBefore: function(obj) {
             $('.page').css('display', 'none');

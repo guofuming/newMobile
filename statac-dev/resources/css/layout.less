@@ -597,7 +597,7 @@ html.panelShow{
 #activity .updateInfo .right{position:absolute;right:5px;top:0px;}
 #activity .photo .photoLi{padding:0;margin:0 10px 0 10px;text-align:center;}
 #activity .photo .photoLi img{display:block;margin:auto;max-width:100%;}
-#activity .photo .photoLi .handle,#activity .text .handle{margin:4px -10px 0 -10px;overflow:hidden;height:30px;}
+#activity .photo .photoLi .handle,#activity .text .handle{margin:4px -10px 0 -10px;height:30px;}
 #activity .photo .photoLi .handle ul,#activity .text .handle ul{overflow:hidden;position:relative;padding-right:10px;}
 #activity .photo .photoLi .handle ul li,#activity .text .handle ul li{margin:0 0 0 28px;overflow:hidden;border:0;background:#fff;border-radius:0;float:right;width:auto;height:30px;}
 #activity .photo .photoLi .handle ul li div,#activity .text .handle ul li div{height:30px;line-height:30px;text-align:center;color:#777777;font-size:11px;}
@@ -606,7 +606,15 @@ html.panelShow{
 #activity .photo .photoLi .handle span.ico_comment,#activity .text .handle span.ico_comment{padding:5px 10px 4px 10px;margin-right:4px;background:url(../img/ico_commentA.png) center no-repeat;background-size:17px auto;}
 #activity .activityList .photoList{overflow:hidden;}
 #activity li .text{margin:0 10px 0 10px;font-size:11px;line-height:20px;text-align:left;color:#999999;}
-#activity li .text .detailDes{color:#333333;font-size:14px;}
+#activity li .text .detailDes{color:#333333;font-size:14px;
+display: -webkit-box;
+text-overflow: ellipsis;
+overflow : hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 6;
+-webkit-box-orient: vertical;
+}
 #activity .menuA{height:37px;border-bottom:1px solid #d8d8d8;}
 #activity .photoList .photoTitle{display:none;}
 #activity .menuA span{width:50%;float:left;height:36px;color:#878385;}
@@ -626,11 +634,11 @@ html.panelShow{
 #activity #activityUploadPhoto{width:100px;height:100px;border-radius:50%;opacity:0;}
 #activity .uploading{position:absolute;left:0;right:0;top:0;bottom:0;width:100px;height:100px;margin:auto;}
 #activity .likerInfoy,#activity ul.likerInfo.empty{display:none}
-#activity .likerInfo{overflow:hidden;width:100%;height:42px;}
+#activity .likerInfo{width:100%;padding-bottom: 10px;overflow: hidden;}
 #activity .likerInfo li{border:0;float:left;margin:5px;}
 #activity .likerInfo li.likeIcon{width:25px;height:25px;background:url(../img/ico_likeA_no.png) center no-repeat #ededed;background-size:16px auto;margin-top:8px;}
 #activity .likerInfo li img{height:32px;width:32px;border-radius:50%;vertical-align:bottom;}
-#activity .commentList{overflow:hidden;margin:0 -10px 0 -10px;border-top:1px solid #f0f0f0;}
+#activity .commentList{width: 100%;overflow:hidden;margin:0 -10px 0 -10px;border-top:1px solid #f0f0f0;}
 #activity .commentList li{margin:0;position:relative;overflow:hidden;border:0;border-bottom:1px solid #f0f0f0;padding:10px;min-height:30px;}
 #activity .commentList li:last-child{border-bottom:0;}
 #activity .commentList li.viewAll{text-align:right;font-size:14px;color:#999999;padding:0 10px 0 10px;height:43px;line-height:43px;}

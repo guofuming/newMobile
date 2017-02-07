@@ -35,7 +35,7 @@ define(function(require, exports, module) {
 
             dom.find('.portrait').on('tap', function() {
                 var url = 'myProfile';
-                if(url == seajs.curModule){
+                if(url == seajs.data.varscurModule){
                     tthis.hide();
                     return;
                 }
@@ -51,7 +51,7 @@ define(function(require, exports, module) {
                 // dom.find('li').removeClass('selected');
                 // $(this).addClass('selected');
                 if(url){
-                    if(url == seajs.curModule){
+                    if(url == seajs.data.varscurModule){
                         tthis.hide();
                         return;
                     }
@@ -62,7 +62,7 @@ define(function(require, exports, module) {
 
         resetCss:function(){
             var dom = $('#' + mId),
-                domCur = $('#'+seajs.curModule),
+                domCur = $('#'+seajs.data.varscurModule),
                 winWidth = $(window).width();
             if(this.status == 'hide'){
                 $('.g-doc').css({'width':'100%'});
@@ -86,9 +86,9 @@ define(function(require, exports, module) {
             this.status = 'hide';
 
             $('#' + mId).find('li').removeClass('selected');
-            $('#' + mId).find('li.' + seajs.curModule).addClass('selected');
+            $('#' + mId).find('li.' + seajs.data.varscurModule).addClass('selected');
 
-            $('#'+ seajs.curModule).show();
+            $('#'+ seajs.data.varscurModule).show();
             $('html').removeClass('panelShow');
             $('#' + mId).find('.panel_cover').css({'display':'none','opacity':'0'});
             this.resetCss();

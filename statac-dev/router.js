@@ -27,13 +27,14 @@ define(function(require, exports, module) {
             require.async(url, function(module) {
                 if (module) {
                     $('.g-doc').hide();
-                    seajs.lastModule = seajs.curModule;
-                    seajs.curModule = obj.name;
+                    // console.log( seajs)
+                    seajs.data.vars.lastModule = seajs.data.vars.curModule;
+                    seajs.data.vars.curModule = obj.name;
                     module.render(obj);
                     share.loadPage($('body'),false);
                     panel.hide();
-                    if(seajs.lastModule){
-                        share.blur(seajs.lastModule);
+                    if(seajs.data.vars.lastModule){
+                        share.blur(seajs.data.vars.lastModule);
                     }
                 } else {
                     console.log('Loading failed. Please refresh and try again!');

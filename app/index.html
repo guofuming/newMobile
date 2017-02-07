@@ -33,13 +33,12 @@
     function getSession(){
         var session_id = sessionStorage.getItem('session_id');
         if(session_id){
+            window.location.href = '#activity/whole';
             return session_id;
         }else{
             window.location.href = '#signin/whole';
         };
     };
-
-    console.log(getSession());
 
     seajs.config({
         vars: {

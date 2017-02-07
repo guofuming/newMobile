@@ -32,8 +32,8 @@ define(function(require, exports, module) {
             });
 
             dom.find('p').on('tap', function(){
-                if(seajs.lastModule){
-                    window.location.href = '#'+ seajs.lastModule +'/whole';
+                if(seajs.data.vars.lastModule){
+                    window.location.href = '#'+ seajs.data.vars.lastModule +'/whole';
                 }
             });
 

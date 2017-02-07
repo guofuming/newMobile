@@ -9,7 +9,7 @@
         <div class="panel_list">
             <ul>
             <% $.each(panelList,function(i){%>
-                <% var selected = panelList[i].url == seajs.curModule ? 'selected' : ''; %>
+                <% var selected = panelList[i].url == seajs.data.vars.curModule ? 'selected' : ''; %>
                 <li class="<%= selected %> <%= panelList[i].class %>" url='<%= panelList[i].url %>'><i></i><%= panelList[i].text %></li>
             <%})%>
             </ul>

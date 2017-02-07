@@ -13,6 +13,7 @@
                 <img src="<%= seajs.data.vars.resources%>img/max_loading.gif" alt="">
             </div>
         </div>
+        <div class="err"></div>
         <div class="forgot">
             <span> Forgot password? </span>
         </div>

@@ -1,11 +1,6 @@
 define(function(require, exports, module) {
 
-    var controller,
-        ajaxPage = {
-            page_num : 0,
-            offset : 20,
-            activity_time : '3d'
-        },
+    var controller, ajaxPage, scrollAjax,
         mId = 'activity',
         panel = require('{component}panel/panel'),
         tplPanel = require('view/panel.tpl'),
@@ -25,10 +20,20 @@ define(function(require, exports, module) {
             if (share.isDom($('#' + mId))) {
                 $('#' + mId).css('display', 'block');
             } else {
+                this.initVar();
                 $('body').append(this.template());
                 this.bindEvt();
             }
             this.ajaxList();
+        },
+
+        initVar:function(){
+            ajaxPage = {
+                page_num : 0,
+                offset : 20,
+                activity_time : '3d'
+            };
+            scrollAjax = true;
         },
 
         bindEvt: function() {
@@ -47,12 +52,24 @@ define(function(require, exports, module) {
                 window.location.href = '#index/whole';
             });
 
+            $(window).on('scroll.activity',function(){
+                // console.log(seajs.data.vars.curModule);
+                if(seajs.data.vars.curModule == 'activity'){
+                    var bdH = $('#' + mId).height();
+                    var windowH = $(window).height();
+                    // console.log($(window).scrollTop(),(bdH - windowH) )
+                    if($(window).scrollTop() >= (bdH - windowH) && scrollAjax){
+                        scrollAjax = false;
+                        tthis.ajaxList();
+                    }
+                }
+            });
+
         },
 
         ajaxList:function(){
             var tthis = this;
             // page_num=0&offset=20&activity_time=2d
-
             share.loadList($('#' + mId).find('.date_list'));
             var ajaxObj = {
                 url: seajs.data.vars.apiAccessUrl + "activity",
@@ -61,12 +78,15 @@ define(function(require, exports, module) {
                 success: function(data) {
                     share.loadList($('#' + mId).find('.date_list'),false);
                     if(data.errcode == undefined){
-                        $('#'+ mId).find('ul').append(tthis.templateLi({arr:data.res}));
+                        scrollAjax = true;
+                        ajaxPage.page_num++;
+                        $('#'+ mId).find('.dataList').append(tthis.templateLi({arr:data.res}));
+                        share.loadList(dom.find('.g-bd'),false);
                     }else{
                         alert(data.errmsg);
                     }
                 }
-            }
+            };
             $.ajax(share.ajaxControl(ajaxObj));
 
         }
