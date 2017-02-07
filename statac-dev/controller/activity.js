@@ -53,7 +53,6 @@ define(function(require, exports, module) {
             });
 
             $(window).on('scroll.activity',function(){
-                // console.log(seajs.data.vars.curModule);
                 if(seajs.data.vars.curModule == 'activity'){
                     var bdH = $('#' + mId).height();
                     var windowH = $(window).height();
@@ -81,16 +80,14 @@ define(function(require, exports, module) {
                         scrollAjax = true;
                         ajaxPage.page_num++;
                         $('#'+ mId).find('.dataList').append(tthis.templateLi({arr:data.res}));
-                        share.loadList(dom.find('.g-bd'),false);
+                        share.loadList($('#' + mId).find('.g-bd'),false);
                     }else{
                         alert(data.errmsg);
                     }
                 }
             };
             $.ajax(share.ajaxControl(ajaxObj));
-
         }
-
     }
     module.exports = controller;
 })

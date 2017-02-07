@@ -78,7 +78,7 @@ define(function(require, exports, module) {
                 data: obj,
                 success: function(data) {
                     if(data.errcode == undefined){
-                        share.setStorage('session_id',data.session_id);
+                        util.setCookie('session_id',data.session_id);
                         seajs.data.vars.apiAccessUrl = seajs.data.vars.apiUrl + 's' + data.session_id + '/';
                         share.cacheLoadUser(data);
                         window.location.href = '#myProfile/whole';

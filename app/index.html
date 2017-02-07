@@ -31,14 +31,19 @@
     var siteUrl = 'http://www.test.com/test/git/newMobile/';
 
     function getSession(){
-        var session_id = sessionStorage.getItem('session_id');
-        if(session_id){
-            window.location.href = '#activity/whole';
-            return session_id;
-        }else{
-            window.location.href = '#signin/whole';
-        };
+        var cookie = document.cookie,
+            search = 'session_id' + '=',
+            start, end;
+        if (cookie.length > 0) {
+            start = cookie.indexOf(search);
+            if (start > -1) {
+                start += search.length;
+                end = cookie.indexOf(';', start) == -1 && cookie.length ;
+                return decodeURI(cookie.substring(start, end));
+            }
+        }
     };
+    // console.log(getSession())
 
     seajs.config({
         vars: {
@@ -56,13 +61,15 @@
             "$": siteUrl + "statac-dev/component/zepto/zepto.js",
             "backbone": siteUrl + "statac-dev/component/backbone/backbone.js",
             "underscore": siteUrl + "statac-dev/component/underscore/underscore.js",
+            "util": "component/util/util.js",
             "share": siteUrl + "statac-dev/share.js",
             "lang": siteUrl + "statac-dev/i18n/en.js",
         }
     });
-    seajs.use(['backbone', 'underscore', 'share', 'lang'], function(backone, underscore, share, lang) {
+    seajs.use(['backbone', 'underscore','util','share', 'lang'], function(backone, underscore, util, share, lang) {
         window.Backbone = backone;
         window._ = underscore;
+        window.util = util;
         window.share = share;
         window.lang = lang;
         seajs.use('../statac-dev/main.js');

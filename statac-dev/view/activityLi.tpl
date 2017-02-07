@@ -16,7 +16,7 @@
                 <% for (var x in arr[i].new_images) {%>
                 <div class='photoLi'>            
                     <div class="photoList">
-                        <img class="imglazyloadA disable_sys_menu" src="" url="<%= arr[i].new_images[x].picture %>" />
+                        <img class="imglazyloadA disable_sys_menu" url="" src="<%= arr[i].new_images[x].picture %>" />
                         <p class="photoTitle"><%= arr[i].new_images[x].about %></p>
                     </div> 
                     <% if (typeof(detail) !== 'undefined') { %>
