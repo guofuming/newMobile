@@ -31,17 +31,64 @@ define(function(require, exports, module) {
         dom.find('input,select,textarea').blur();
     };
 
-    share.checkPermissions = function(){
-        var bool,
-            userInfo = share.userInfo();
-        if(!userInfo){
-            $('.g-doc').remove();
-            window.location.href = '#index/whole';
-            bool = false;
-        }else{
-            bool = true;
-        }
+    share.logout = function(){
+        share.clearStorage();
+        window.location.href = '#index/whole';
+    };
+
+    share.clearStorage = function(){
+        util.delCookie('session_id');
+        localStorage.clear();
+        sessionStorage.clear();
+    };
+
+    share.checkPermissions = function(type){
+        var bool=true,
+            userInfo = share.userInfo(),
+            session = util.getCookie('session_id');
+
+            if(type){
+                if(session){
+                    if(userInfo){
+                        // window.location.href = '#activity/whole';
+                    }else{
+                        share.getUserInfo();
+                        bool = false;
+                    }
+                }else{
+                    window.location.href = '#signin/whole';
+                    bool = false;
+                }
+            }else{
+                if(session){
+                    if(userInfo){
+                        window.location.href = '#activity/whole';
+                    }else{
+                        share.getUserInfo();
+                        bool = false;
+                    }
+                }
+            }
+            // return;
         return bool;
+    };
+
+    share.getUserInfo = function(){
+        var ajaxObj = {
+            url: seajs.data.vars.apiUrl + "login",
+            type: 'POST',
+            success: function(data) {
+                if(data.errcode == undefined){
+                    util.setCookie('session_id',data.session_id);
+                    seajs.data.vars.apiAccessUrl = seajs.data.vars.apiUrl + 's' + data.session_id + '/';
+                    share.cacheLoadUser(data);
+                    window.location.href = '#signin/whole';
+                }else{
+                    window.location.href = '#index/whole';
+                }
+            }
+        }
+        $.ajax(share.ajaxControl(ajaxObj));
     };
 
     share.formGender = function(val){
@@ -57,14 +104,14 @@ define(function(require, exports, module) {
 
     share.userInfo = function(userId) {
         if(!userId){
-           userId = share.getStorage('loadId'); 
+           userId = share.getStorage('user_id'); 
         }
         return JSON.parse(share.getStorage(userId));
     };
 
     share.cacheLoadUser = function(data) {
         share.cacheUser(data);
-        share.setStorage('loadId', data.account.usr_id);
+        share.setStorage('user_id', data.account.usr_id);
     };
 
     share.cacheUser = function(data) {

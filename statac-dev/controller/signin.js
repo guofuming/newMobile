@@ -9,6 +9,7 @@ define(function(require, exports, module) {
         template: _.template(tpl),
 
         render: function(obj) {
+            if(!share.checkPermissions(false)){ return; };
             if (share.isDom($('#' + mId))) {
                 $('#' + mId).css('display', 'block');
             } else {
@@ -21,8 +22,8 @@ define(function(require, exports, module) {
             var tthis = this,
                 dom = $('#' + mId);
 
-            dom.find('.back').on('tap', function() {
-                window.history.go(-1);
+            dom.find('.left').on('tap', function() {
+                window.location.href = '#index';
             });
 
             dom.find('input[name=username]').val('wells2015');

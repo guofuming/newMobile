@@ -9,6 +9,7 @@ define(function(require, exports, module) {
         template: _.template(tpl),
         
         render: function(obj) {
+            if(!share.checkPermissions(false)){ return; };
             if (share.isDom($('#' + mId))) {
                 $('#' + mId).css('display', 'block');
             } else {

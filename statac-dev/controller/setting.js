@@ -12,7 +12,7 @@ define(function(require, exports, module) {
         templatePanel: _.template(tplPanel),
 
         render: function(obj) {
-            if(!share.checkPermissions()){ return; };
+            if(!share.checkPermissions(true)){ return; };
             panel.render(this.templatePanel);
 
             if (share.isDom($('#' + mId))) {
@@ -36,7 +36,7 @@ define(function(require, exports, module) {
             });
 
             dom.find('.logout').on('tap', function(){
-                window.location.href = '#index/whole';
+                share.logout();
             });
 
         },

@@ -23,6 +23,7 @@ define(function(require, exports, module) {
                 $('body').append(tpl({'userInfo':userInfo,'panelList':share.panelList}));
                 this.bindEvt();
             }
+            this.hide();
         },
         bindEvt: function() {
             var tthis = this,
@@ -69,8 +70,8 @@ define(function(require, exports, module) {
                 dom.off('touchmove');
                 setTimeout(function(){
                     domCur.css({'overflow-x':'visible'});
-                    domCur.children().css({'width':'100%'});
-                },200);
+                    domCur.children().css({'width':winWidth + 'px'});
+                },300);
             }else{
                 dom.on('touchmove',function(e){
                     e.stopPropagation();
@@ -81,24 +82,34 @@ define(function(require, exports, module) {
             }
         },
 
+        cssTransition:function(width,val){
+           return 'width:'+width+'; transform: translateX('+val+');';
+        },
+
         hide:function(){
             // transition: all .3s linear;
+            var dom = $('#' + mId),
+                curPage = $('#'+ seajs.data.vars.curModule);
             this.status = 'hide';
+
+            $('html').removeClass('panelShow');
 
             $('#' + mId).find('li').removeClass('selected');
             $('#' + mId).find('li.' + seajs.data.vars.curModule).addClass('selected');
 
-            $('#'+ seajs.data.vars.curModule).show();
-            $('html').removeClass('panelShow');
             $('#' + mId).find('.panel_cover').css({'display':'none','opacity':'0'});
+
             this.resetCss();
         },
 
         show:function(){
             var dom = $('#' + mId);
             this.status = 'show';
+
             $('html').addClass('panelShow');
+
             dom.find('.panel_cover').show();
+
             setTimeout(function(){
                 dom.find('.panel_cover').css({'display':'block','opacity':'1'});
             },200);

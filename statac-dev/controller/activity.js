@@ -14,7 +14,7 @@ define(function(require, exports, module) {
         templatePanel: _.template(tplPanel),
 
         render: function(obj) {
-            if(!share.checkPermissions()){ return; };
+            if(!share.checkPermissions(true)){ return; };
             panel.render(this.templatePanel);
 
             if (share.isDom($('#' + mId))) {
@@ -30,7 +30,7 @@ define(function(require, exports, module) {
         initVar:function(){
             ajaxPage = {
                 page_num : 0,
-                offset : 20,
+                offset : 10,
                 activity_time : '3d'
             };
             scrollAjax = true;
@@ -48,17 +48,12 @@ define(function(require, exports, module) {
                 window.location.href = '#upgrade/whole';
             });
 
-            dom.find('.logout').on('tap', function(){
-                window.location.href = '#index/whole';
-            });
-
             $(window).on('scroll.activity',function(){
                 if(seajs.data.vars.curModule == 'activity'){
                     var bdH = $('#' + mId).height();
                     var windowH = $(window).height();
                     // console.log($(window).scrollTop(),(bdH - windowH) )
-                    if($(window).scrollTop() >= (bdH - windowH) && scrollAjax){
-                        scrollAjax = false;
+                    if($(window).scrollTop() >= (bdH - windowH)){
                         tthis.ajaxList();
                     }
                 }
@@ -68,7 +63,9 @@ define(function(require, exports, module) {
 
         ajaxList:function(){
             var tthis = this;
-            // page_num=0&offset=20&activity_time=2d
+            if(!scrollAjax){ return; }
+
+            scrollAjax = false;
             share.loadList($('#' + mId).find('.date_list'));
             var ajaxObj = {
                 url: seajs.data.vars.apiAccessUrl + "activity",

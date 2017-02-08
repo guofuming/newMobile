@@ -13,7 +13,7 @@ define(function(require, exports, module) {
         templatePanel: _.template(tplPanel),
         
         render: function(obj) {
-            if(!share.checkPermissions()){ return; };
+            if(!share.checkPermissions(true)){ return; };
 
             var userInfo = share.userInfo();
             panel.render(this.templatePanel);

@@ -34,7 +34,7 @@
                 </ul>
             </div>
             <div class="tab_content_box">
-                <div class="selected tab_content">
+                <div class=" tab_content">
                     <div class="album_box public_album">
                         <h3><span class="title">Public</span>
                             <% if(pictures.length){%>
@@ -112,7 +112,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="tab_content tab_content_details">
+                <div class="selected tab_content tab_content_details">
                     <ul>
                         <li><label class="title"> Worth </label><span class="edit" url="myProfileWorth"></span></li>
                         <li><label> Annual income </label><span>Please ask me</span></li>
