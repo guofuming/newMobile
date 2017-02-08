@@ -389,8 +389,9 @@ html.panelShow .g-hd {
   float: right;
   width: calc(100vw - 260px);
   height: 100%;
+  background: rgba(0, 0, 0, 0.1);
   display: none;
-  transition: all .2s ease;
+  transition: all 1.5s ease;
   opacity: 0;
 }
 #panel .head {
@@ -402,16 +403,24 @@ html.panelShow .g-hd {
   float: left;
   padding: 10px;
 }
+#panel .head dt label {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  overflow: hidden;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  background: url('../img/max_loading.gif') no-repeat center;
+  background-size: 38px;
+}
 #panel .head dd {
   float: left;
   padding-left: 10px;
   font-size: .18rem;
   line-height: 66px;
-}
-#panel .head img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
 }
 #panel .panel_list {
   font-size: .16rem;
@@ -562,7 +571,7 @@ html.panelShow .g-hd {
 #signin .validation .img_box.loading {
   border: 1px solid #ccc;
   text-align: center;
-  background: #fff url('../img/max_loading.gif') no-repeat center;
+  background: url('../img/max_loading.gif') no-repeat center;
   background-size: 25px;
 }
 #signin .validation .img_box img {
@@ -651,15 +660,21 @@ html.panelShow .g-hd {
   width: 106px;
   text-align: center;
 }
-#myProfile .portrait img {
-  width: 60px;
-  height: 60px;
-  vertical-align: middle;
+#myProfile .portrait label {
+  width: 68px;
+  height: 68px;
+  display: inline-block;
+  overflow: hidden;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   border-radius: 50%;
+  background: url('../img/max_loading.gif') no-repeat center;
+  background-size: 40px;
+}
+#myProfile .portrait img {
+  vertical-align: middle;
 }
 #myProfile .info_right {
   padding-left: 106px;
@@ -799,6 +814,7 @@ html.panelShow .g-hd {
   height: 70px;
   margin: 0 4px;
   margin-bottom: 10px;
+  overflow: hidden;
 }
 #myProfile .tab_content dt {
   background: url('../img/photo_addicon.jpg') no-repeat center;
@@ -806,10 +822,8 @@ html.panelShow .g-hd {
 }
 #myProfile .tab_content dd {
   width: 70px;
-}
-#myProfile .tab_content img {
-  width: 70px;
-  height: 70px;
+  background: url('../img/max_loading.gif') no-repeat center;
+  background-size: 30px;
 }
 /********upgrade star********/
 #upgrade .body_all {
@@ -1038,16 +1052,18 @@ html.panelShow .g-hd {
 }
 #page404 .g-bd {
   height: calc(100% - 44px);
-  background-color: #f3f3f3;
+  background-color: #fff;
+  opacity: .8;
+  min-height: 500px;
 }
 #page404 p {
   font-size: 16px;
   text-align: center;
-  padding: 20px 0;
+  padding: 40px 0;
   height: 100%;
-  color: #999;
-  background: url('../img/bg404.jpg') no-repeat center;
-  background-size: 320px;
+  color: #666;
+  background: url('../img/bg404.png') no-repeat center;
+  background-size: 440px;
   opacity: .8;
 }
 #activity ul {
@@ -1406,6 +1422,39 @@ html.panelShow .g-hd {
   border-bottom: 0;
 }
 /********activity end********/
+#slideImg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  height: 100%;
+  width: 100%;
+}
+#slideImg ul {
+  display: -webkit-box;
+  display: -moz-box;
+  width: 100%;
+  height: 100%;
+}
+#slideImg li {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: url(../img/max_loading.gif) no-repeat center;
+  background-size: 32px;
+}
+#slideImg li:before {
+  content: '';
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+#slideImg li img {
+  max-width: 100%;
+  max-height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
 /* media */
 /* 横屏 */
 @media screen and (orientation: landscape) {

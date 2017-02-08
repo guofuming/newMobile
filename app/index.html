@@ -28,53 +28,61 @@
         #loading .loadBg{background:#000;position:fixed;z-index:10001;left:0;right:0;top:0;bottom:0;opacity:.3;filter:alpha(opacity=30);}
     </style>
     <script type="text/javascript">
-    var siteUrl = 'http://www.test.com/test/git/newMobile/';
 
-    function getSession(){
-        var cookie = document.cookie,
-            search = 'session_id' + '=',
-            start, end;
-        if (cookie.length > 0) {
-            start = cookie.indexOf(search);
-            if (start > -1) {
-                start += search.length;
-                end = cookie.indexOf(';', start) == -1 && cookie.length ;
-                return decodeURI(cookie.substring(start, end));
+        var environment,
+            domain = window.location.origin,
+            fileUrl = domain + '/test/git/newMobile/';
+
+        if(window.location.href.indexOf('?dev') > -1){
+            // environment = 'dev';
+        }else{
+            // environment = 'master';
+        }
+
+        function getSession(){
+            var cookie = document.cookie,
+                search = 'session_id' + '=',
+                start, end;
+            if (cookie.length > 0) {
+                start = cookie.indexOf(search);
+                if (start > -1) {
+                    start += search.length;
+                    end = cookie.indexOf(';', start) == -1 && cookie.length ;
+                    return decodeURI(cookie.substring(start, end));
+                }
             }
-        }
-    };
-    // console.log(getSession())
+        };
+        // console.log(getSession())
 
-    seajs.config({
-        vars: {
-            'apiUrl': 'http://www.a.com/apis/',
-            'resources': siteUrl + 'statac-dev/resources/',
-            'component': siteUrl + 'statac-dev/component/',
-            'apiAccessUrl': 'http://www.a.com/apis/s' + getSession() + '/',
-        },
-        base: "../statac-dev/",
-        preload: ["$", "backbone", "underscore"],
-        'map': [
-            [/^(.*\.(?:css|js|tpl))(.*)$/i, '$1?v=' + Math.random()]
-        ],
-        alias: {
-            "$": siteUrl + "statac-dev/component/zepto/zepto.js",
-            "backbone": siteUrl + "statac-dev/component/backbone/backbone.js",
-            "underscore": siteUrl + "statac-dev/component/underscore/underscore.js",
-            "util": "component/util/util.js",
-            "share": siteUrl + "statac-dev/share.js",
-            "lang": siteUrl + "statac-dev/i18n/en.js",
-        }
-    });
-    seajs.use(['backbone', 'underscore','util','share', 'lang'], function(backone, underscore, util, share, lang) {
-        window.Backbone = backone;
-        window._ = underscore;
-        window.util = util;
-        window.share = share;
-        window.lang = lang;
-        seajs.use('../statac-dev/main.js');
-    });
+        seajs.config({
+            vars: {
+                'apiUrl': 'http://www.a.com/apis/',
+                'resources': fileUrl + 'statac-dev/resources/',
+                'component': fileUrl + 'statac-dev/component/',
+                'apiAccessUrl': 'http://www.a.com/apis/s' + getSession() + '/',
+            },
+            base: "../statac-dev/",
+            preload: ["$", "backbone", "underscore"],
+            'map': [
+                [/^(.*\.(?:css|js|tpl))(.*)$/i, '$1?v=' + Math.random()]
+            ],
+            alias: {
+                "$": fileUrl + "statac-dev/component/zepto/zepto.js",
+                "backbone": fileUrl + "statac-dev/component/backbone/backbone.js",
+                "underscore": fileUrl + "statac-dev/component/underscore/underscore.js",
+                "util": "component/util/util.js",
+                "share": fileUrl + "statac-dev/share.js",
+                "lang": fileUrl + "statac-dev/i18n/en.js",
+            }
+        });
+        seajs.use(['backbone', 'underscore','util','share', 'lang'], function(backone, underscore, util, share, lang) {
+            window.Backbone = backone;
+            window._ = underscore;
+            window.util = util;
+            window.share = share;
+            window.lang = lang;
+            seajs.use('../statac-dev/main.js');
+        });
     </script>
 </body>
-
 </html>

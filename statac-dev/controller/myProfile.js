@@ -4,6 +4,8 @@ define(function(require, exports, module) {
         userInfo,
         mId = 'myProfile',
         panel = require('{component}panel/panel'),
+        slideImg = require('{component}slideImg/slideImg'),
+        tplSlideImg = require('{component}slideImg/slideImg.tpl'),
         tplPanel = require('view/panel.tpl'),
         tpl = require('view/myProfile.tpl');
 
@@ -11,11 +13,12 @@ define(function(require, exports, module) {
 
         template: _.template(tpl),
         templatePanel: _.template(tplPanel),
+        templateSlideImg: _.template(tplSlideImg),
         
         render: function(obj) {
             if(!share.checkPermissions(true)){ return; };
-
-            var userInfo = share.userInfo();
+            
+            userInfo = share.userInfo();
             panel.render(this.templatePanel);
 
             if (share.isDom($('#' + mId))) {
@@ -23,6 +26,8 @@ define(function(require, exports, module) {
             } else {
                 $('body').append(this.template(userInfo));
                 this.bindEvt();
+                $('#' + mId).find('.g-bd').lazyload({center:true});
+                
             }
         },
 
@@ -40,6 +45,11 @@ define(function(require, exports, module) {
 
             dom.find('.upgrade').on('tap' ,function(){
                 window.location.href = '#upgrade/whole';
+            });
+
+            dom.find('.album_box dd').on('tap' ,function(){
+                console.log(userInfo.pictures);
+
             });
         },
 

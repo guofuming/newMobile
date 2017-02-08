@@ -22,7 +22,7 @@ define(function(require, exports, module) {
         },
 
         loadPage: function(obj) {
-            var url = siteUrl + 'statac-dev/controller/'+obj.name;
+            var url = fileUrl + 'statac-dev/controller/'+obj.name;
             share.loadPage($('body'));
             require.async(url, function(module) {
                 if (module) {

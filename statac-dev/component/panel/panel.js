@@ -22,6 +22,7 @@ define(function(require, exports, module) {
             } else {
                 $('body').append(tpl({'userInfo':userInfo,'panelList':share.panelList}));
                 this.bindEvt();
+                $('#' + mId).find('.portrait').lazyload({center:true});
             }
             this.hide();
         },
@@ -94,10 +95,10 @@ define(function(require, exports, module) {
 
             $('html').removeClass('panelShow');
 
-            $('#' + mId).find('li').removeClass('selected');
-            $('#' + mId).find('li.' + seajs.data.vars.curModule).addClass('selected');
+            dom.find('li').removeClass('selected');
+            dom.find('li.' + seajs.data.vars.curModule).addClass('selected');
 
-            $('#' + mId).find('.panel_cover').css({'display':'none','opacity':'0'});
+            dom.find('.panel_cover').css({'display':'none','opacity':'0'});
 
             this.resetCss();
         },

@@ -6,7 +6,7 @@
     <div class="g-bd">
         <div class="info_box">
             <div class="portrait">
-                <img class="" src=<%=photo.picture%>>
+                <label><img class="" src="" url="<%=photo.picture%>"></label>
             </div>
             <div class="info_right">
                 <div class="name">
@@ -23,8 +23,6 @@
             </div>
         </div>
 
-        <!--  -->
-
         <div class="tab_wrapper">
             <div class="tab_title">
                 <ul class="f-flex">
@@ -34,7 +32,7 @@
                 </ul>
             </div>
             <div class="tab_content_box">
-                <div class=" tab_content">
+                <div class="selected tab_content">
                     <div class="album_box public_album">
                         <h3><span class="title">Public</span>
                             <% if(pictures.length){%>
@@ -44,7 +42,7 @@
                         <dl class="f-cb">
                             <dt></dt>
                             <% for(var i = 0; i< pictures.length; i++){%>
-                                <dd><img src="<%= pictures[i].icon%>" ></dd>
+                                <dd><img url="<%= pictures[i].icon%>" ></dd>
                             <%}%>
                             <div class="more">
                                 >
@@ -52,7 +50,7 @@
                         </dl>
                     </div>
                     <div class="album_box private_album">
-                        <!-- <h3><span class="title">Private</span>
+                        <h3><span class="title">Private</span>
                         <% if(private_pictures.length){%>
                             (<%= private_pictures.length %> photo)
                         <%}%>
@@ -60,12 +58,12 @@
                         <dl class="f-cb">
                             <dt></dt>
                             <% for(var i = 0; i< private_pictures.length; i++){%>
-                                <dd><img src="<%= private_pictures[i].icon%>" ></dd>
+                                <dd><img url="<%= private_pictures[i].icon%>" ></dd>
                             <%}%>
                             <div class="more">
                                 >
                             </div>
-                        </dl> -->
+                        </dl>
                     </div>
                 </div>
                 <div class="tab_content tab_content_about">
@@ -112,7 +110,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="selected tab_content tab_content_details">
+                <div class=" tab_content tab_content_details">
                     <ul>
                         <li><label class="title"> Worth </label><span class="edit" url="myProfileWorth"></span></li>
                         <li><label> Annual income </label><span>Please ask me</span></li>

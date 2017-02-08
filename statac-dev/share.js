@@ -116,6 +116,19 @@ define(function(require, exports, module) {
 
     share.cacheUser = function(data) {
         var key = data.account.usr_id;
+        if(data.private_pictures){
+            var rex = new RegExp(/(.+\/rest\/)(.+)/g);
+            $.each(data.private_pictures,function(i){
+                var curObj = data.private_pictures[i];
+                for(x in curObj){
+                    if(x == 'icon' || x == 'picture'){
+                        curObj[x] = domain + '/rest/' +curObj[x].replace(rex,'$2');
+                    }
+                }
+            })
+        }
+        console.log(data.private_pictures)
+        // https://www.MasonSoft.com/rest/
         share.setStorage(key,  JSON.stringify(data));
     };
 

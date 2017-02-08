@@ -1,9 +1,15 @@
 define(function(require, exports, module) {
     require('resources/css/layout.css');
+    require('{component}lazyload/lazyload');
+    require('{component}slideImg/slideImg');
 
     var router = require('router.js');
     window.routerObj = new router;
     Backbone.history.start();
     
+
+    if(!window.location.hash){
+    	window.location.href = '#index/whole';
+    }
 
 })
