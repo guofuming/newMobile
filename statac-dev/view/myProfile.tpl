@@ -32,8 +32,8 @@
                 </ul>
             </div>
             <div class="tab_content_box">
-                <div class="selected tab_content">
-                    <div class="album_box public_album">
+                <div class="selected tab_content tab_content_photo">
+                    <div type="public_album" class="album_box public_album">
                         <h3><span class="title">Public</span>
                             <% if(pictures.length){%>
                                 (<%= pictures.length %> photo)
@@ -49,7 +49,7 @@
                             </div>
                         </dl>
                     </div>
-                    <div class="album_box private_album">
+                    <div type="private_album" class="album_box private_album">
                         <h3><span class="title">Private</span>
                         <% if(private_pictures.length){%>
                             (<%= private_pictures.length %> photo)

@@ -36,7 +36,9 @@ define(function(require, exports, module) {
             });
 
             dom.find('.logout').on('tap', function(){
-                share.logout();
+                if(confirm('确定要退出登陆？')){
+                    share.logout();
+                }
             });
 
         },

@@ -1,6 +1,6 @@
 define(function(require, exports, module) {
 
-    var dom, opts, touch,
+    var mId = 'slideImg', dom, opts, touch,
         isMove = false,
         defaults = {
             index: 0,
@@ -12,8 +12,9 @@ define(function(require, exports, module) {
     var controller = {
         init: function(opt) {
             opts = $.extend({}, defaults, opt || {});
-            dom = $(this);
-
+            dom = $('#'+ mId);
+            this.dom = dom;
+            
             touch = { l1: 0, l2: 0 };
             opts.width = window.innerWidth;
             opts.height = window.innerHeight;
@@ -73,6 +74,7 @@ define(function(require, exports, module) {
         setIndex: function() {
             touch.l1 = opts.index * -opts.width;
             dom.attr('index', opts.index);
+            dom.find('.number').text(opts.index + 1 + '/' + opts.size);
         },
 
         cssSlate: function(x, y, time) {
@@ -85,6 +87,7 @@ define(function(require, exports, module) {
 
         initCss: function() {
             dom.attr({ 'index': opts.index });
+            dom.find('.number').text(opts.index + 1 + '/' + opts.size);
             this.cssSlate(-opts.index * opts.width);
             touch.l1 = -opts.index * opts.width;
         },

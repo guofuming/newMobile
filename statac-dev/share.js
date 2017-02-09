@@ -34,6 +34,7 @@ define(function(require, exports, module) {
     share.logout = function(){
         share.clearStorage();
         window.location.href = '#index/whole';
+        window.location.reload();
     };
 
     share.clearStorage = function(){
@@ -201,6 +202,11 @@ define(function(require, exports, module) {
         var callback = obj.success,
             callbackError = obj.error;
         var success = function(data, status, xhr) {
+            if (data.errcode == 100) {
+                share.logout();
+            }else if(data.errcode == 404){
+                alert(data.errcode);
+            }
             if (callback) {
                 callback(data, status, xhr);
             }
@@ -209,7 +215,7 @@ define(function(require, exports, module) {
         obj.success = success;
         obj.timeout = 120000;
         obj.error = function(xhr, errorType, error) {
-            // console.log(xhr, errorType, error);
+            console.log(xhr, errorType, error);
             // share.pageLoad(false, $('body'));
             // share.limitTime();
             console.log('请求错误');

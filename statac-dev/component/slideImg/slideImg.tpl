@@ -1,5 +1,9 @@
 <div id="slideImg">
     <ul>
-        <li><img src="" url='<%arr[i].picture%>' alt=""></li>
+    	<% $.each(arr,function(i){%>
+        	<li imgId='<%= arr[i].item_id%>'><img src="" url='<%= arr[i].picture%>' alt="">
+        	</li>
+        <%})%>
     </ul>
+    <div class="number"></div>
 </div>

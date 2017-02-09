@@ -487,11 +487,12 @@ html.panelShow{
                 position: absolute;
                 right: 0;
                 top: 0;
-                width: 20px;
+                width: 24px;
                 height: 100%;
+                font-size: 15px;
                 line-height: 80px;
                 text-align: center;
-                background-color: #eaeaea;
+                background-color: #f3f2f2;
                 float: right;
             }
         }
@@ -689,11 +690,27 @@ display: -webkit-box;
 
 #slideImg {
     position: fixed;
+    z-index: 9999;
     top: 0;
     left: 0;
     background-color: #000;
     height: 100%;
     width: 100%;
+    .number{
+        position: absolute;
+        top: 4%;
+        right: 10px;
+        text-align: right;
+        border-radius: 5px;
+        line-height: 18px;
+        font-size: 16px;
+        padding: 2px 6px;
+        margin-right: 20px;
+        display: inline-block;
+        background-color: #191A1C;
+        color: #CECECE;
+        letter-spacing: .5px;
+    }
 }
 
 #slideImg ul {
@@ -707,8 +724,7 @@ display: -webkit-box;
     width: 100%;
     height: 100%;
     text-align: center;
-    background: url(../img/max_loading.gif) no-repeat center;
-    background-size: 32px;
+    .less-loadBg(32px);
 }
 
 #slideImg li:before {
@@ -723,6 +739,84 @@ display: -webkit-box;
     max-height: 100%;
     display: inline-block;
     vertical-align: middle;
+}
+
+
+
+// photoAlbum
+
+#photoAlbum{
+    .data_list_box{
+        dl{
+            width: 100%;
+        }
+        dt,dd{
+            position: relative;
+            float: left;
+            margin: 10px 5px;
+            width: ~'calc((100% - 40px) / 4)';
+            padding-bottom:~'calc((100% - 40px) / 4)';
+            overflow: hidden;
+        }
+        img{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        dd{
+            .less-loadBg(25px);
+        }
+        dt{
+            background: url('@{g-bgPath}photo_addicon.jpg') no-repeat center ;
+            background-size: cover;
+        }
+    }
+}
+
+
+#uploadPhoto{
+    .g-bd{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .u-btn{
+        .prefix(border-radius,5px);
+    }
+    .noteOne{
+        margin-top: 12px;
+    }
+    .upload_box{
+        position: relative;
+        width: 102px;
+        height: 102px;
+        margin: 100px auto 60px auto;
+        overflow: hidden;
+        .line{
+            width: 100px;
+            height: 100px;
+            border: 1px dashed #cccccc;
+        }
+        .ico_add{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 2;
+            margin: -15.5px 0 0 -15.5px;
+            width: 50px;
+            height: 50px;
+            background: url(../img/btn_addA.png) 0 0 no-repeat;
+            background-size: 31px 31px;
+        }
+        input{
+            position: absolute;
+            z-index: 3;
+            left: 0;
+            top: 0;
+            width: 102px;
+            height: 102px;
+            opacity: 0;
+        }
+    }
 }
 //皮肤
 @import "skin";

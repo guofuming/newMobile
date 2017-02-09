@@ -79,7 +79,7 @@ define(function(require, exports, module) {
                         $('#'+ mId).find('.dataList').append(tthis.templateLi({arr:data.res}));
                         share.loadList($('#' + mId).find('.g-bd'),false);
                     }else{
-                        alert(data.errmsg);
+                        console.log(data.errmsg);
                     }
                 }
             };
