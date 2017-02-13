@@ -33,6 +33,7 @@ define(function(require, exports, module) {
                     module.render(obj);
                     share.loadPage($('body'),false);
                     panel.hide();
+                    share.setBodyHeight();
                     if(seajs.data.vars.lastModule){
                         share.blur(seajs.data.vars.lastModule);
                     }

@@ -32,7 +32,6 @@ define(function(require, exports, module) {
                 $('body').append(this.template(userInfo));
                 this.bindEvt();
             }
-            popup.show({type:'1',text:'123asdafafdfsdfdf',wrapper:$('#' + mId).find('.g-bd')});
         },
 
         bindEvt: function() {
@@ -108,6 +107,8 @@ define(function(require, exports, module) {
                 processData: false,
                 success: function(data) {
                     if(data.status_code == 0){
+                        popup.show({type:'1',text:'上传成功',wrapper:$('#' + mId).find('.g-bd')});
+
                         var _userInfo = share.userInfo();
                         if(albumType == 'private'){
                             _userInfo.private_pictures.push(data)
@@ -115,8 +116,9 @@ define(function(require, exports, module) {
                             _userInfo.pictures.push(data)
                         }
                         share.cacheLoadUser(_userInfo);
-                    }else{
 
+                    }else{
+                        popup.show({type:'1',text:data.msg,wrapper:$('#' + mId).find('.g-bd')});
                     }
                     share.btnLoading(dom.find('.u-btn'),false);
                     tthis.clearFile();

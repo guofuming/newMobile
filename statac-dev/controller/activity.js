@@ -48,17 +48,12 @@ define(function(require, exports, module) {
                 window.location.href = '#upgrade/whole';
             });
 
-            $(window).on('scroll.activity',function(){
-                if(seajs.data.vars.curModule == 'activity'){
-                    var bdH = $('#' + mId).height();
-                    var windowH = $(window).height();
-                    // console.log($(window).scrollTop(),(bdH - windowH) )
-                    if($(window).scrollTop() >= (bdH - windowH)){
-                        tthis.ajaxList();
-                    }
+            dom.find('.g-bd').on('scroll',function(){
+                var bdH = $(this).find('div:eq(0)').height();
+                if($(this).scrollTop() >= (bdH -  $(this).height())){
+                    tthis.ajaxList();
                 }
             });
-
         },
 
         ajaxList:function(){

@@ -67,19 +67,19 @@ define(function(require, exports, module) {
                 domCur = $('#'+seajs.data.vars.curModule),
                 winWidth = $(window).width();
             if(this.status == 'hide'){
-                $('.g-doc').css({'width':'100%'});
+                // $('.g-doc').css({'width':'100%'});
                 dom.off('touchmove');
-                setTimeout(function(){
-                    domCur.css({'overflow-x':'visible'});
-                    domCur.children().css({'width':winWidth + 'px'});
-                },300);
+                // setTimeout(function(){
+                    // domCur.css({'overflow-x':'visible'});
+                    // domCur.children().css({'width':winWidth + 'px'});
+                // },300);
             }else{
                 dom.on('touchmove',function(e){
                     e.stopPropagation();
                     e.preventDefault();
                 });
-                domCur.css({'width': winWidth - dom.find('.panel_left').width() + 'px','overflow-x':'hidden'});
-                domCur.children().css({'width': winWidth + 'px'});
+                // domCur.css({'width': winWidth - dom.find('.panel_left').width() + 'px','overflow-x':'hidden'});
+                // domCur.children().css({'width': winWidth + 'px'});
             }
         },
 

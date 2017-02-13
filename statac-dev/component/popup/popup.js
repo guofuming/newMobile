@@ -38,7 +38,8 @@ define(function(require, exports, module) {
 
         show:function(opt){
             var dom = $(wrapper);
-            var str = '<div class="popup_tip">'+opt.text+'</div>'
+            var str = '<div class="popup_tip">'+opt.text+'</div>';
+            // $('#' + mId).remove();
             dom.append(str);
             opt.wrapper.append(dom);
         }, 

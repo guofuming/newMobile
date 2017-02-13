@@ -235,5 +235,10 @@ define(function(require, exports, module) {
         }
     };
 
+    share.setBodyHeight = function(mId){
+        var dom = $('#' + mId ? mId : seajs.data.vars.curModule);
+        dom.find('.g-bd').height($(window).height() - dom.find('.g-hd').height());
+    }
+
     module.exports = share;
 });
