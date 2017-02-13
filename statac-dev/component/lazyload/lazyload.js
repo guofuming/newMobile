@@ -19,6 +19,11 @@
                 var tthis = this,
                     domImg = dom.find('img');
 
+                if(!domImg.length){
+                    console.log('lazyload 没有图片 @'+ seajs.data.vars.curModule)
+                    return;
+                }
+
                 if (opts.priorityLoad) {
                     if (typeof(opts.priorityLoad) != 'object') {
                         opts.priorityLoad = [opts.priorityLoad]
@@ -46,12 +51,15 @@
                 }
 
                 newImg.onerror = function() {
-                    domImg.attr('src', 'img/imgerr.jpg');
-                    var imgW = this.width,
-                        imgH = this.height;
-                    if (tthis.center) {
-                        tthis.imgCenter(domImg, imgW, imgH);
+                    console.log(newImg.src)
+                    var _newImg =  new Image();
+                    newImg.onload = function() {
+                        domImg.attr('src', this.src);
+                        if (tthis.center) {
+                            tthis.imgCenter(domImg, this.width, this.height);
+                        }
                     }
+                    newImg.src = '../statac-dev/resources/img/imgerr.jpg';
                 }
 
                 newImg.src = url;

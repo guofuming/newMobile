@@ -18,17 +18,16 @@ define(function(require, exports, module) {
         render: function(obj) {
             if(!share.checkPermissions(true)){ return; };
             userInfo = share.userInfo();
-
+            
             if(obj.val === undefined || obj.val == 'public'){
                 title = 'Public album';
                 arrData = userInfo.pictures;
-                albumType == 'public';
+                albumType = 'public';
             }else{
                 title = ' Private album';
                 arrData = userInfo.private_pictures;
-                albumType == 'private';
+                albumType = 'private';
             }
-
             if (share.isDom($('#' + mId)) && !reRender) {
                 $('#' + mId).css('display', 'block');
             } else {
@@ -56,9 +55,13 @@ define(function(require, exports, module) {
                 window.location.href = '#upgrade/whole';
             });
 
+            dom.find('.data_list dt').on('tap' ,function(){
+                console.log(albumType)
+                window.location.href = '#uploadPhoto/whole/custom'+albumType;
+            });
+
             dom.find('.album_box dd').on('tap' ,function(){
                 console.log(userInfo.pictures)
-                
             });
 
             dom.find('.data_list').on('tap',function(e){
@@ -73,14 +76,6 @@ define(function(require, exports, module) {
                 }
 
             });
-        },
-
-        formData:function(data){
-            var obj = {};
-            obj.info = data.account;
-            obj.pictures = data.pictures;
-            obj.private_pictures = data.private_pictures;
-            return obj;
         },
     }
     module.exports = controller;

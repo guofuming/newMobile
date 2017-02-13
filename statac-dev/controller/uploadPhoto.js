@@ -1,8 +1,12 @@
 define(function(require, exports, module) {
 
+    require('{component}popup/popup.css');
+
     var controller,
+        albumType,
         userInfo,
         mId = 'uploadPhoto',
+        popup = require('{component}popup/popup'),
         tplPanel = require('view/panel.tpl'),
         tpl = require('view/uploadPhoto.tpl');
 
@@ -14,6 +18,12 @@ define(function(require, exports, module) {
         render: function(obj) {
             if(!share.checkPermissions(true)){ return; };
             
+            if(obj.val == 'private'){
+                albumType = 'private';
+            }else{
+                albumType = 'public';
+            }
+            
             userInfo = share.userInfo();
 
             if (share.isDom($('#' + mId))) {
@@ -21,8 +31,8 @@ define(function(require, exports, module) {
             } else {
                 $('body').append(this.template(userInfo));
                 this.bindEvt();
-                $('#' + mId).find('.g-bd').lazyload({center:true});
             }
+            popup.show({type:'1',text:'123asdafafdfsdfdf',wrapper:$('#' + mId).find('.g-bd')});
         },
 
         bindEvt: function() {
@@ -46,27 +56,73 @@ define(function(require, exports, module) {
                 }
             });
 
-            dom.find('.album_box dd').on('tap' ,function(){
-                var arr,
-                    type = $(this).parents('.album_box').attr('type');
-                if(type == 'public_album'){
-                    arrData = userInfo.pictures;
-                }else{
-                    arrData = userInfo.private_pictures;
-                };
-
-                $('body').append(tthis.templateSlideImg({arr:arrData}));
-                slideImg.init({index:$(this).index()-1});
-                slideImg.dom.lazyload();
+            dom.find('input[type=file]').on('change' ,function(){
+                var val = $(this).val(),
+                    files = $(this)[0].files[0];
+                if(files && val){
+                    var newFiles = new FileReader();
+                    newFiles.onload = function(evt){
+                        dom.find('.file_img_box img').attr({'src':this.result});
+                        dom.find('.file_img_box').show();
+                    }
+                    newFiles.readAsDataURL(files);
+                }
             });
+
+            dom.find('.file_img_box i').on('tap' ,function(){
+               tthis.clearFile();
+            });
+
+            dom.find('.u-btn').on('tap',function(){
+                if(!dom.find('input[type=file]').val()){
+                    return;
+                };
+                share.btnLoading($(this));
+                tthis.ajaxUpload();
+            })
+        },
+        
+        clearFile:function(){
+            $('#' + mId).find('input').val('');
+            $('#' + mId).find('.file_img_box').hide();
         },
 
-        formData:function(data){
-            var obj = {};
-            obj.info = data.account;
-            obj.pictures = data.pictures;
-            obj.private_pictures = data.private_pictures;
-            return obj;
+        ajaxUpload:function(){
+            var tthis = this;
+            var formObj = new FormData(),
+                dom = $('#' + mId);
+            
+            if(dom.find('input[type=file]').val()){
+                formObj.append('file', dom.find('input[type=file]')[0].files[0])
+            }
+
+            var _albumType = albumType == 'private' ? 11 : -1;
+
+            formObj.append('album_type', _albumType);
+
+            var ajaxObj = {
+                url: seajs.data.vars.apiUrl + "common_upload_img",
+                type: 'POST',
+                data: formObj,
+                contentType: false,    //不可缺
+                processData: false,
+                success: function(data) {
+                    if(data.status_code == 0){
+                        var _userInfo = share.userInfo();
+                        if(albumType == 'private'){
+                            _userInfo.private_pictures.push(data)
+                        }else{
+                            _userInfo.pictures.push(data)
+                        }
+                        share.cacheLoadUser(_userInfo);
+                    }else{
+
+                    }
+                    share.btnLoading(dom.find('.u-btn'),false);
+                    tthis.clearFile();
+                }
+            }
+            $.ajax(share.ajaxControl(ajaxObj));
         },
     }
     module.exports = controller;
