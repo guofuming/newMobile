@@ -54,6 +54,17 @@ define(function(require, exports, module) {
                     tthis.ajaxList();
                 }
             });
+
+            dom.find('.date_list').on('tap',function(e){
+                var target = $(e.target);
+                var currentLa = target.closest('label');
+                var userId = currentLa.attr('uid');
+                var userName = currentLa.attr('username');
+                if(userId){
+                    window.location.href = '#userProfile/whole/custom'+ userName + '&&' + userId;
+                }
+
+            })
         },
 
         ajaxList:function(){
