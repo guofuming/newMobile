@@ -383,7 +383,7 @@ html.panelShow .g-hd {
   top: 0;
   width: 260px;
   height: 100%;
-  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 /***************************************************/
 /* 结构布局样式*/
@@ -491,6 +491,9 @@ html.panelShow .g-hd {
   line-height: 66px;
 }
 #panel .panel_list {
+  height: calc(100% - 90px);
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   font-size: .16rem;
   line-height: .4rem;
   color: #5c5c5d;
