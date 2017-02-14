@@ -44,7 +44,9 @@ define(function(require, exports, module) {
                 window.location.href = '#'+ url +'/whole';
             });
 
-            dom.find('.panel_cover').on('tap', function() {
+            dom.find('.panel_cover').on('tap', function(e) {
+                e.stopPropagation();
+                e.preventDefault();
                 tthis.toggle();
             });
 
@@ -75,9 +77,18 @@ define(function(require, exports, module) {
                 // },300);
             }else{
                 dom.on('touchmove',function(e){
+                    var domli = dom.find('.panel_list li');
+                    var sizeH = dom.find('.head').height() + domli.size() * domli.eq(0).height();
                     e.stopPropagation();
                     e.preventDefault();
+                    // console.log($(window).height() ,sizeH)
+                    // if($(window).height() >= sizeH){
+                    //     e.stopPropagation();
+                    //     e.preventDefault();
+                    // }else{
+                    // }
                 });
+                         // || $(e.target).closest('li').length
                 // domCur.css({'width': winWidth - dom.find('.panel_left').width() + 'px','overflow-x':'hidden'});
                 // domCur.children().css({'width': winWidth + 'px'});
             }

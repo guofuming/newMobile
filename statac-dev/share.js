@@ -6,13 +6,13 @@ define(function(require, exports, module) {
     share.panelList = [
         { class:'upgrade', text:'Upgrade', url:'upgrade'},
         { class:'activity', text:'Activities', url:'activity'},
-        { class:'search', text:'Search', url:'search'},
-        { class:'letsMeet', text:'Let\'s Meet', url:'letsMeet'},
-        { class:'emails', text:'Emails / Winks', url:'emails'},
+        // { class:'search', text:'Search', url:'search'},
+        // { class:'letsMeet', text:'Let\'s Meet', url:'letsMeet'},
+        // { class:'emails', text:'Emails / Winks', url:'emails'},
         // { class:'LiveChat', text:'Live Chat', url:'letsMeet'},
         { class:'connections', text:'Connections', url:'connections'},
-        { class:'Blogs', text:'Blogs', url:'Blogs'},
-        { class:'forums', text:'forums', url:'forums'},
+        // { class:'Blogs', text:'Blogs', url:'Blogs'},
+        // { class:'forums', text:'forums', url:'forums'},
         { class:'Feedback', text:'Feedback', url:'Feedback'},
         { class:'setting', text:'Settings & Help', url:'setting'},
     ];
