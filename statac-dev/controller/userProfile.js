@@ -22,19 +22,18 @@ define(function(require, exports, module) {
         
         render: function(obj) {
             if(!share.checkPermissions(true)){ return; };
+            share.reRender(mId, reRender);
+
             userInfo = share.userInfo();
-            
             hrefArr = share.getHrefParameter(obj.val);
 
-            this.ajaxUser();
-
-            if (share.isDom($('#' + mId)) && !reRender) {
+            if (share.isDom($('#' + mId))) {
                 $('#' + mId).css('display', 'block');
             } else {
-                $('#' + mId).remove();
                 $('body').append(this.template({userName:hrefArr[0]}));
                 this.bindEvt();
             }
+            this.ajaxUser();
         },
 
         ajaxAfter:function(){

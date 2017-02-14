@@ -15,13 +15,13 @@ define(function(require, exports, module) {
         render: function(obj) {
             if(!share.checkPermissions(true)){ return; };
             
-            var userInfo = share.userInfo();
+            // userInfo = share.userInfo();
             panel.render(this.templatePanel);
 
             if (share.isDom($('#' + mId))) {
                 $('#' + mId).css('display', 'block');
             } else {
-                $('body').append(this.template(userInfo));
+                $('body').append(this.template());
                 this.bindEvt();
             }
             // panel.toggle();

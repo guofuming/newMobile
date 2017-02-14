@@ -43,6 +43,12 @@ define(function(require, exports, module) {
         sessionStorage.clear();
     };
 
+    share.reRender = function(mId, bool){
+        if(bool){
+            $('#' + mId).remove();
+        }
+    };
+
     share.checkPermissions = function(type){
         var bool=true,
             userInfo = share.userInfo(),

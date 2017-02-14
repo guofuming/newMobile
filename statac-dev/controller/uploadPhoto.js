@@ -3,6 +3,7 @@ define(function(require, exports, module) {
     require('{component}popup/popup.css');
 
     var controller,
+        reRender = true,
         albumType,
         userInfo,
         mId = 'uploadPhoto',
@@ -17,6 +18,7 @@ define(function(require, exports, module) {
         
         render: function(obj) {
             if(!share.checkPermissions(true)){ return; };
+            share.reRender(mId, reRender);
             
             if(obj.val == 'private'){
                 albumType = 'private';

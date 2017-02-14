@@ -12,14 +12,14 @@ define(function(require, exports, module) {
     	window.location.href = '#index/whole';
     }
 
-    var isPerform = true;
-    $(window).resize(function(){
-    	if(isPerform){
-	    	isPerform = false;
-    		setTimeout(function(){
-	    		isPerform = true;
-	    		share.setBodyHeight();
-    		},300);
-    	}
-    })
+    // var isPerform = true;
+    // $(window).resize(function(){
+    // 	if(isPerform){
+	   //  	isPerform = false;
+    // 		setTimeout(function(){
+	   //  		isPerform = true;
+	   //  		share.setBodyHeight();
+    // 		},300);
+    // 	}
+    // })
 })
