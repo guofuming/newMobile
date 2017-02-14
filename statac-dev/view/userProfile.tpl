@@ -6,13 +6,12 @@
         </div>
     </div>
     <div class="g-bd">
-        <div class="data_list_box">
-            <dl class="data_list">
-                <dt>
-                    
-                </dt>
-               asds
-            </dl>
+        <div class="userImgBox">
+        
+        </div>
+
+        <div class="tab_wrapper">
+            
         </div>
     </div>
 </div>

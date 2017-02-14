@@ -833,6 +833,65 @@ display: -webkit-box;
         }
     }
 }
+
+
+#userProfile{
+    .userImgBox{
+        position: relative;
+        width: 100%;
+        height: 300px;
+        img{
+            max-height: 300px;
+        }
+        .info{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 5px 10px;
+            color: #fff;
+            background: rgba(0,0,0,.3);
+        }
+    }
+    .tab_content{
+        padding: 10px;
+    }
+    .tab_content_about{
+        li{
+            margin-top: 10px;
+        }
+        p{
+            font-size: 14px;
+            font-weight: 400;
+            color: #000;
+        }
+    }
+    .tab_content_details{
+        .details p {
+            color: @g-cl;
+            padding-top: 10px;
+            font-size: 12px;
+        }
+    }
+    .tab_title{
+        ul{
+            line-height: 38px;
+            height: 38px;
+            font-size: 13px;
+        }
+        li{
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+            &.selected{
+                color: @g-cl;
+                border-bottom: 2px solid @g-cl;
+            }
+        }
+    }
+}
+
+
+
 //皮肤
 @import "skin";
 // 设备样式

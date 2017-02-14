@@ -56,15 +56,23 @@ define(function(require, exports, module) {
             });
 
             dom.find('.date_list').on('tap',function(e){
-                var target = $(e.target);
-                var currentLa = target.closest('label');
-                var userId = currentLa.attr('uid');
-                var userName = currentLa.attr('username');
+                var target = $(e.target),
+                    currentLa = target.closest('label'),
+                    currentLi = target.closest('li'),
+                    userId = currentLa.attr('uid'),
+                    userName = currentLa.attr('username');
+
                 if(userId){
                     window.location.href = '#userProfile/whole/custom'+ userName + '&&' + userId;
+                    return;
                 }
+                if(currentLi.attr('aid')){
+                    window.location.href = '#userProfile/whole/custom'+ currentLi.attr('name') + '&&' + currentLi.attr('aid');
+                    return;
+                }
+            });
 
-            })
+            // dom.find('')
         },
 
         ajaxList:function(){
@@ -85,7 +93,7 @@ define(function(require, exports, module) {
                         $('#'+ mId).find('.dataList').append(tthis.templateLi({arr:data.res}));
                         share.loadList($('#' + mId).find('.g-bd'),false);
                     }else{
-                        console.log(data.errmsg);
+                        console.log(data);
                     }
                 }
             };

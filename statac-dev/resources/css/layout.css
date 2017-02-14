@@ -1571,6 +1571,52 @@ html.panelShow .g-hd {
   height: 102px;
   opacity: 0;
 }
+#userProfile .userImgBox {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+#userProfile .userImgBox img {
+  max-height: 300px;
+}
+#userProfile .userImgBox .info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px 10px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.3);
+}
+#userProfile .tab_content {
+  padding: 10px;
+}
+#userProfile .tab_content_about li {
+  margin-top: 10px;
+}
+#userProfile .tab_content_about p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+}
+#userProfile .tab_content_details .details p {
+  color: #3FAFE4;
+  padding-top: 10px;
+  font-size: 12px;
+}
+#userProfile .tab_title ul {
+  line-height: 38px;
+  height: 38px;
+  font-size: 13px;
+}
+#userProfile .tab_title li {
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+#userProfile .tab_title li.selected {
+  color: #3FAFE4;
+  border-bottom: 2px solid #3FAFE4;
+}
 /* media */
 /* 横屏 */
 @media screen and (orientation: landscape) {

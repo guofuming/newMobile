@@ -30,8 +30,8 @@ define(function(require, exports, module) {
                     // console.log( seajs)
                     seajs.data.vars.lastModule = seajs.data.vars.curModule;
                     seajs.data.vars.curModule = obj.name;
-                    module.render(obj);
                     share.loadPage($('body'),false);
+                    module.render(obj);
                     panel.hide();
                     share.setBodyHeight();
                     if(seajs.data.vars.lastModule){

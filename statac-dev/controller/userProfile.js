@@ -5,17 +5,20 @@ define(function(require, exports, module) {
         arrData,
         albumType,
         userInfo,
+        userObj,
         hrefArr,
         mId = 'userProfile',
         // slideImg = require('{component}slideImg/slideImg'),
         // tplSlideImg = require('{component}slideImg/slideImg.tpl'),
         tpl = require('view/userProfile.tpl'),
-        tplA = require('view/userProfileA.tpl');
+        tplP = require('view/userProfilePhoto.tpl'),
+        tplTab = require('view/userProfileTab.tpl');
 
     controller = {
 
         template: _.template(tpl),
-        templateA: _.template(tplA),
+        templateP: _.template(tplP),
+        templateTab: _.template(tplTab),
         
         render: function(obj) {
             if(!share.checkPermissions(true)){ return; };
@@ -29,16 +32,17 @@ define(function(require, exports, module) {
                 $('#' + mId).css('display', 'block');
             } else {
                 $('#' + mId).remove();
-                $('body').append(this.template({arr:arrData,userName:hrefArr[0]}));
+                $('body').append(this.template({userName:hrefArr[0]}));
                 this.bindEvt();
             }
-            this.ajaxAfter();
         },
+
         ajaxAfter:function(){
             var dom = $('#' + mId);
-            dom.find('.g-bd').append(this.templateA());
-
+            dom.find('.tab_wrapper').html(this.templateTab());
+            dom.find('.userImgBox').html(this.templateP({userObj:userObj}));
         },
+
         bindEvt: function() {
             var tthis= this,
                 dom = $('#' + mId);
@@ -47,23 +51,30 @@ define(function(require, exports, module) {
                 window.history.go(-1);
             });
         	
-            dom.find('.tab_title li').on('tap' ,function(){
-                var index = $(this).index();
-                share.tabSwitch(dom.find('.tab_wrapper'),index);
+            dom.find('.tab_wrapper').on('tap' ,function(e){
+                var target = $(e.target);
+                var currentL = target.closest('li');
+                if(currentL.hasClass('f-flex-auto')){
+                    var index = currentL.index();
+                    share.tabSwitch(dom.find('.tab_wrapper'),index);
+                }
         	});
         },
 
         ajaxUser:function(){
-
+            var tthis= this;
+            share.loadPage($('body'));
             var ajaxObj = {
                 url: seajs.data.vars.apiAccessUrl + "user_profile",
                 type: 'POST',
                 data: { username:hrefArr[0], prof_id:hrefArr[1] },
                 success: function(data) {
-                        console.log(data)
+                    userObj = data;
+                    share.loadPage($('body'),false);
                     if(data.errcode == undefined){
-
-                    }else{
+                        tthis.ajaxAfter();
+                    }else if(data.errcode == 121 || data.errcode == 125){
+                        $('#' + mId).find('.g-bd').html(data.errmsg);
                     }
                 }
             };
