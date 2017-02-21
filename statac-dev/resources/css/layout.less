@@ -853,6 +853,7 @@ display: -webkit-box;
         position: relative;
         width: 100%;
         height: 300px;
+        overflow: hidden;
         img{
             max-height: 300px;
         }
@@ -936,6 +937,59 @@ display: -webkit-box;
 
 /********feedback end********/
 
+
+/********connections star********/
+#connections .head_title{height:44px;}
+#connections .noCompetence{min-height:calc(100vh - 93px);background-color:#f5f7f8;}
+#connections .userList li{width:100%;height:100px;    /* background: #F6F8FA; */display:block;position:relative;overflow:hidden;border-bottom:1px dotted #d9d9d9;}
+#connections .userList li:active{background:#e3e3e3;}
+#connections .userList li label{width:70px;height:70px;overflow:hidden;float:left;position:relative;border-radius:50px;margin:15px;z-index:1;background:#ccc url(../img/default_avatar1.png) no-repeat center center;background-size:70px 70px;}
+#connections .userList li label span{height:15px;position:absolute;left:21px;bottom:5px;padding:0 0 0 17px;font-size:11px;font-weight:bold;background:url(../img/icons-search.png) left -527px no-repeat;background-size:90px auto;color:#fff;}
+#connections .userList li .info{padding:0 15px 0 5px;line-height:28px;overflow:hidden;margin-left:100px;}
+#connections .userList li .info .name{padding:13px 0 0 0;position:relative;overflow:hidden;}
+#connections .userList li .info .city{font-size:13px;line-height:25px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;-moz-binding:url('ellipsis.xml#ellipsis');color:#a3a4a6;}
+#connections .userList li .info .name span.hyperlink{font-size:15px;text-decoration:none;float:left;max-width:135px;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;-moz-binding:url('ellipsis.xml#ellipsis');overflow:hidden;color:#000;}
+#connections .userList li .info .name span.date{float:right;margin-right:8px;color:#a3a4a6;font-size:12px;}
+#connections .userList li .words{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#424242;line-height:20px;}
+#connections .tabName{height:42px;margin-bottom:6px;}
+#connections .tabName .nav{width:100%;overflow:hidden;display:table;float:left;}
+#connections .tabName .tabTitle_li{float:left;padding-top:17px;line-height:14px;font-size:10px;width:25%;height:23px;display:table-cell;text-align:center;font-weight:100;color:#878385;border-bottom:1px solid #e5e5e5;}
+#connections .tabName .tabTitle_li div{height:100%;border-left:1px solid #ccc;}
+#connections .tabName .tabTitle_li:nth-child(1) div{border-left:0;}
+#connections .tabName .nav li:last-child{border-right:0px;}
+#connections .tabName .nav li.tabTitle_selected_li{height:22px;}
+#connections .menuArea{width:100%;height:48px;line-height:20px;background:#fff;border-bottom:1px solid #d8d8d8;text-align:center;}
+#connections .tabContent{padding-top:49px;background-color:#f5f7f8;}
+#connections .menuArea div{display:inline-block;width:25%;}
+#connections .menuArea .num{position:absolute;left:18px;top:-5px;min-width:10px;border-radius:7px;background:#DF4141;color:#fff;font-size:12px;text-align:center;padding:2px 3px;line-height:10px;font-style:normal;}
+#connections .menuArea div span{position:relative;display:block;margin:auto;width:23px;height:21px;margin-top:6px;}
+#connections .menuArea div p{font-size:12px;color:#b5b5b5;    /*transform: scale(0.8);*/}
+#connections .resultTip{font-size:10px;color:#666666;padding:0 10px;line-height:21px;display:none;}
+#connections .matchRed{width:10px;height:10px;background:#DF4141;display:block;border-radius:10px;top:11px;left:83px;position:absolute;}
+
+#connections .userList li label span{background:url(../img/icons-search.png) left -527px no-repeat;background-size:90px auto;color:#fff;}
+#connections .tabName .tabTitle_selected_li{border-bottom:2px solid #3FAFE4;color:#3FAFE4;}
+#connections .menuArea div span.vi{background:url(../img/segment_controller.png) 0 0 no-repeat;background-size:263px 42px;}
+#connections .menuArea div.on span.vi{background:url(../img/segment_controller.png) 0 -21px no-repeat;background-size:263px 42px;}
+#connections .menuArea div span.wi{background:url(../img/segment_controller.png) -81px 0 no-repeat;background-size:263px 42px;}
+#connections .menuArea div.on span.wi{background:url(../img/segment_controller.png) -81px -21px no-repeat;background-size:263px 42px;}
+#connections .menuArea div span.fa{background:url(../img/segment_controller.png) -162px 0 no-repeat;background-size:263px 42px;}
+#connections .menuArea div.on span.fa{background:url(../img/segment_controller.png) -162px -21px no-repeat;background-size:263px 42px;}
+#connections .menuArea div span.my{background:url(../img/segment_controller.png) -243px 0 no-repeat;background-size:263px 42px;}
+#connections .menuArea div.on span.my{background:url(../img/segment_controller.png) -243px -21px no-repeat;background-size:263px 42px;}
+#connections .noCompetence .btn-noCompetence{background-color:#3FAFE4;}
+#connections .menuArea div.on p{color:#3FAFE4;}
+
+
+#connections{
+    .g-hd{
+        height: 91px;
+    }
+    .g-bd{
+        height: calc(~'100% - 91px');
+    }
+}
+/********connections end********/
 
 //皮肤
 @import "skin";

@@ -40,6 +40,9 @@ define(function(require, exports, module) {
             var dom = $('#' + mId);
             dom.find('.tab_wrapper').html(this.templateTab());
             dom.find('.userImgBox').html(this.templateP({userObj:userObj}));
+
+
+            dom.find('.userImgBox').lazyload({center:true});
         },
 
         bindEvt: function() {

@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* media */
+/* 横屏 */
+@media screen and (orientation: landscape) {
+  #index {
+    background: url(../img/hp_loading.jpg) center no-repeat;
+    background-size: cover;
+    background-color: #2174C6;
+  }
+}
+/* 竖屏 */
+/* 窗口宽度<960,设计宽度=768 */
+/* 窗口宽度<768,设计宽度=640 */
+/* 窗口宽度<640,设计宽度=480 */
+/* 窗口宽度<480,设计宽度=320 */
+/*# sourceMappingURL=media.css.map */
