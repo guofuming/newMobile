@@ -1,7 +1,6 @@
 define(function(require, exports, module) {
 
     var controller,
-        reRender = true,
         arrData,
         albumType,
         userInfo,
@@ -15,14 +14,13 @@ define(function(require, exports, module) {
         tplTab = require('view/userProfileTab.tpl');
 
     controller = {
-
+        reRender:true,
         template: _.template(tpl),
         templateP: _.template(tplP),
         templateTab: _.template(tplTab),
         
         render: function(obj) {
             if(!share.checkPermissions(true)){ return; };
-            share.reRender(mId, reRender);
 
             userInfo = share.userInfo();
             hrefArr = share.getHrefParameter(obj.val);
@@ -40,7 +38,6 @@ define(function(require, exports, module) {
             var dom = $('#' + mId);
             dom.find('.tab_wrapper').html(this.templateTab());
             dom.find('.userImgBox').html(this.templateP({userObj:userObj}));
-
 
             dom.find('.userImgBox').lazyload({center:true});
         },

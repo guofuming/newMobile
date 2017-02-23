@@ -5,11 +5,11 @@ define(function(require, exports, module) {
         mId = 'popup',
         wrapper = '<div id="popup"></div>';
 
-    $(window).on('resize',function(){
+    $(window).on('resize', function() {
         // if(controller.status == 'hide'){
 
         // }else{
-            // controller.resetCss();
+        // controller.resetCss();
         // }
     });
 
@@ -23,27 +23,57 @@ define(function(require, exports, module) {
                 var index = $(this).index();
                 tthis.tabSwitch(dom.find('.tab_wrapper'), index);
             });
-           
+
         },
 
-        resetCss:function(){
+        resetCss: function() {
             var dom = $('#' + mId);
         },
 
-        hide:function(){
+        hide: function() {
             // transition: all .3s linear;
             var dom = $('#' + mId);
 
         },
 
-        show:function(opt){
-            var dom = $(wrapper);
-            var str = '<div class="popup_tip">'+opt.text+'</div>';
-            // $('#' + mId).remove();
+        init: function(opt) {
+            $('#' + mId).remove();
+
+            if (opt.type == 'error' || opt.type == 'success') {
+                this.prompt(opt);
+            }
+
+            this.bindEvt();
+        },
+
+        bindEvt: function(){
+            var dom = $('#' + mId);
+
+            dom.find('.close').on('tap', function() {
+               dom.remove();
+            });
+
+        },
+
+        prompt: function(opt) {
+            var dom = $(wrapper),
+                str = '<div class=' + opt.type + '>' +
+                '<div class="tip">' + opt.text + '</div><div class="close">x</div>' +
+                '</div>';
+
             dom.append(str);
             opt.wrapper.append(dom);
-        }, 
 
+
+            setTimeout(function(){
+                dom.remove();
+            },3000)
+        },
+
+        show: function(opt) {
+
+            this.init(opt);
+        },
     }
     module.exports = controller;
 })

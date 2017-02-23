@@ -129,4 +129,9 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+select {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
 /*# sourceMappingURL=reset.css.map */

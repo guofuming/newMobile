@@ -3,7 +3,6 @@ define(function(require, exports, module) {
     require('{component}popup/popup.css');
 
     var controller,
-        reRender = true,
         albumType,
         userInfo,
         mId = 'uploadPhoto',
@@ -12,20 +11,20 @@ define(function(require, exports, module) {
         tpl = require('view/uploadPhoto.tpl');
 
     controller = {
-
+        reRender:true,
         template: _.template(tpl),
         templatePanel: _.template(tplPanel),
-        
+
         render: function(obj) {
-            if(!share.checkPermissions(true)){ return; };
-            share.reRender(mId, reRender);
-            
-            if(obj.val == 'private'){
-                albumType = 'private';
-            }else{
+            if (!share.checkPermissions(true)) {
+                return; };
+
+            if (obj.val == 'public' || !obj.val) {
                 albumType = 'public';
+            } else {
+                albumType = 'private';
             }
-            
+
             userInfo = share.userInfo();
 
             if (share.isDom($('#' + mId))) {
@@ -34,66 +33,72 @@ define(function(require, exports, module) {
                 $('body').append(this.template(userInfo));
                 this.bindEvt();
             }
+            // popup.show({type:'error',text:'请选择一张照片！',wrapper:$('#' + mId).find('.g-bd')});
         },
 
         bindEvt: function() {
-            var tthis= this,
+            var tthis = this,
                 dom = $('#' + mId);
-        	
-            dom.find('.left').on('tap', function(){
+
+            dom.find('.left').on('tap', function() {
                 window.history.go(-1);
             });
 
-            dom.find('.upgrade').on('tap' ,function(){
+            dom.find('.upgrade').on('tap', function() {
                 window.location.href = '#upgrade/whole';
             });
 
-            dom.find('.tab_content_photo .more').on('tap',function(){
+            dom.find('.tab_content_photo .more').on('tap', function() {
                 var type = $(this).parents('.album_box').attr('type');
-                if(type == 'public_album'){
+                if (type == 'public_album') {
                     window.location.href = '#photoAlbum/whole';
-                }else{
+                } else {
                     window.location.href = '#photoAlbum/whole/customprivate';
                 }
             });
 
-            dom.find('input[type=file]').on('change' ,function(){
+            dom.find('input[type=file]').on('change', function() {
                 var val = $(this).val(),
                     files = $(this)[0].files[0];
-                if(files && val){
+                if (files && val) {
                     var newFiles = new FileReader();
-                    newFiles.onload = function(evt){
-                        dom.find('.file_img_box img').attr({'src':this.result});
+                    newFiles.onload = function(evt) {
+                        dom.find('.file_img_box img').attr({ 'src': this.result });
                         dom.find('.file_img_box').show();
                     }
                     newFiles.readAsDataURL(files);
                 }
             });
 
-            dom.find('.file_img_box i').on('tap' ,function(){
-               tthis.clearFile();
+            dom.find('.file_img_box i').on('tap', function() {
+                tthis.clearFile();
             });
 
-            dom.find('.u-btn').on('tap',function(){
-                if(!dom.find('input[type=file]').val()){
+            dom.find('.u-btn').on('tap', function() {
+                // $(this).find('div').length
+                if ($(this).find('div').length) {
+                    return;
+                };
+                if (!dom.find('input[type=file]').val()) {
+                    popup.show({ type: 'error', text: '请选择一张照片！', wrapper: $('#' + mId).find('.g-bd') });
                     return;
                 };
                 share.btnLoading($(this));
                 tthis.ajaxUpload();
             })
         },
-        
-        clearFile:function(){
+
+        clearFile: function() {
             $('#' + mId).find('input').val('');
             $('#' + mId).find('.file_img_box').hide();
         },
 
-        ajaxUpload:function(){
+        ajaxUpload: function() {
             var tthis = this;
             var formObj = new FormData(),
                 dom = $('#' + mId);
-            
-            if(dom.find('input[type=file]').val()){
+
+            if (dom.find('input[type=file]').val()) {
                 formObj.append('file', dom.find('input[type=file]')[0].files[0])
             }
 
@@ -105,24 +110,24 @@ define(function(require, exports, module) {
                 url: seajs.data.vars.apiUrl + "common_upload_img",
                 type: 'POST',
                 data: formObj,
-                contentType: false,    //不可缺
+                contentType: false, //不可缺
                 processData: false,
                 success: function(data) {
-                    if(data.status_code == 0){
-                        popup.show({type:'1',text:'上传成功',wrapper:$('#' + mId).find('.g-bd')});
+                    if (data.status_code == 0) {
+                        popup.show({ type: 'success', text: '上传成功', wrapper: $('#' + mId).find('.g-bd') });
 
                         var _userInfo = share.userInfo();
-                        if(albumType == 'private'){
+                        if (albumType == 'private') {
                             _userInfo.private_pictures.push(data)
-                        }else{
+                        } else {
                             _userInfo.pictures.push(data)
                         }
                         share.cacheLoadUser(_userInfo);
 
-                    }else{
-                        popup.show({type:'1',text:data.msg,wrapper:$('#' + mId).find('.g-bd')});
+                    } else {
+                        popup.show({ type: 'error', text: data.msg, wrapper: $('#' + mId).find('.g-bd') });
                     }
-                    share.btnLoading(dom.find('.u-btn'),false);
+                    share.btnLoading(dom.find('.u-btn'), false);
                     tthis.clearFile();
                 }
             }

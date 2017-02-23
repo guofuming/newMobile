@@ -31,6 +31,7 @@ define(function(require, exports, module) {
                     seajs.data.vars.lastModule = seajs.data.vars.curModule;
                     seajs.data.vars.curModule = obj.name;
                     share.loadPage($('body'),false);
+                    module.reRender ? $('#' + obj.name).remove() : '';
                     module.render(obj);
                     panel.hide();
                     // share.setBodyHeight();

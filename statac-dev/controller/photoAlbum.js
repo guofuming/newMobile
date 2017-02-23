@@ -1,7 +1,6 @@
 define(function(require, exports, module) {
 
     var controller,
-        reRender = true,
         arrData,
         albumType,
         userInfo,
@@ -11,7 +10,7 @@ define(function(require, exports, module) {
         tpl = require('view/photoAlbum.tpl');
 
     controller = {
-
+        reRender:true,
         template: _.template(tpl),
         templateSlideImg: _.template(tplSlideImg),
         
@@ -28,7 +27,7 @@ define(function(require, exports, module) {
                 arrData = userInfo.private_pictures;
                 albumType = 'private';
             }
-            if (share.isDom($('#' + mId)) && !reRender) {
+            if (share.isDom($('#' + mId))) {
                 $('#' + mId).css('display', 'block');
             } else {
                 $('#' + mId).remove();

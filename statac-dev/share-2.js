@@ -1150,11 +1150,7 @@ define(function(require, exports, module) {
         return datetime;
     };
 
-    share.reRender = function(bool, id) {
-        if (bool) {
-            this.delIdPage(id);
-        }
-    };
+ 
 
     share.panel = function(panel, tpl, mId, nav, callback) {
         if ($('#userNav').length < 1) {

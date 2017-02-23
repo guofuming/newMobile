@@ -5,10 +5,29 @@
     left: 0;
     top: 0;
     width: 100%;
-    .popup_tip{
+    .error,.success{
+        position: relative;
         width: 100%;
         margin-top: 44px;
-        background: red;
         padding: 8px 10px;
+        background: #ff634a;
+        color: #fff;
+        .tip{
+            padding-right: 20px;
+        }
+        .close{
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+            right: 0;
+            top: 0;
+            color: #fff;
+            font-size: 18px;
+        }
+    }
+    .success{
+        background: #29C23C;
     }
 }

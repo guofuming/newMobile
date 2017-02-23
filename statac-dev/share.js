@@ -13,7 +13,7 @@ define(function(require, exports, module) {
         { class:'connections', text:'Connections', url:'connections'},
         // { class:'Blogs', text:'Blogs', url:'Blogs'},
         // { class:'forums', text:'forums', url:'forums'},
-        { class:'Feedback', text:'Feedback', url:'Feedback'},
+        { class:'feedback', text:'Feedback', url:'feedback'},
         { class:'setting', text:'Settings & Help', url:'setting'},
     ];
 
@@ -41,12 +41,6 @@ define(function(require, exports, module) {
         util.delCookie('session_id');
         localStorage.clear();
         sessionStorage.clear();
-    };
-
-    share.reRender = function(mId, bool){
-        if(bool){
-            $('#' + mId).remove();
-        }
     };
 
     share.checkPermissions = function(type){

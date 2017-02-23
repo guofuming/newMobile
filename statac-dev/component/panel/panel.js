@@ -4,25 +4,25 @@ define(function(require, exports, module) {
         userInfo,
         mId = 'panel';
 
-    $(window).on('resize',function(){
+    $(window).on('resize', function() {
         // if(controller.status == 'hide'){
 
         // }else{
-            controller.resetCss();
+        controller.resetCss();
         // }
     })
 
     controller = {
 
-        status : 'hide',
+        status: 'hide',
         render: function(tpl) {
             var userInfo = share.userInfo();
             if (share.isDom($('#' + mId))) {
                 $('#' + mId).css('display', 'block');
             } else {
-                $('body').append(tpl({'userInfo':userInfo,'panelList':share.panelList}));
+                $('body').append(tpl({ 'userInfo': userInfo, 'panelList': share.panelList }));
                 this.bindEvt();
-                $('#' + mId).find('.portrait').lazyload({center:true});
+                $('#' + mId).find('.portrait').lazyload({ center: true });
             }
             this.hide();
         },
@@ -37,11 +37,11 @@ define(function(require, exports, module) {
 
             dom.find('.portrait').on('tap', function() {
                 var url = 'myProfile';
-                if(url == seajs.data.vars.curModule){
+                if (url == seajs.data.vars.curModule) {
                     tthis.hide();
                     return;
                 }
-                window.location.href = '#'+ url +'/whole';
+                window.location.href = '#' + url + '/whole';
             });
 
             dom.find('.panel_cover').on('tap', function(e) {
@@ -54,29 +54,29 @@ define(function(require, exports, module) {
                 var url = $(this).attr('url');
                 // dom.find('li').removeClass('selected');
                 // $(this).addClass('selected');
-                if(url){
-                    if(url == seajs.data.vars.curModule){
+                if (url) {
+                    if (url == seajs.data.vars.curModule) {
                         tthis.hide();
                         return;
                     }
-                    window.location.href = '#'+ url +'/whole';
+                    window.location.href = '#' + url + '/whole';
                 }
             });
         },
 
-        resetCss:function(){
+        resetCss: function() {
             var dom = $('#' + mId),
-                domCur = $('#'+seajs.data.vars.curModule),
+                domCur = $('#' + seajs.data.vars.curModule),
                 winWidth = $(window).width();
-            if(this.status == 'hide'){
+            if (this.status == 'hide') {
                 // $('.g-doc').css({'width':'100%'});
                 dom.off('touchmove');
                 // setTimeout(function(){
-                    // domCur.css({'overflow-x':'visible'});
-                    // domCur.children().css({'width':winWidth + 'px'});
+                // domCur.css({'overflow-x':'visible'});
+                // domCur.children().css({'width':winWidth + 'px'});
                 // },300);
-            }else{
-                dom.on('touchmove',function(e){
+            } else {
+                dom.on('touchmove', function(e) {
                     var domli = dom.find('.panel_list li');
                     var sizeH = dom.find('.head').height() + domli.size() * domli.eq(0).height();
                     e.stopPropagation();
@@ -88,20 +88,20 @@ define(function(require, exports, module) {
                     // }else{
                     // }
                 });
-                         // || $(e.target).closest('li').length
+                // || $(e.target).closest('li').length
                 // domCur.css({'width': winWidth - dom.find('.panel_left').width() + 'px','overflow-x':'hidden'});
                 // domCur.children().css({'width': winWidth + 'px'});
             }
         },
 
-        cssTransition:function(width,val){
-           return 'width:'+width+'; transform: translateX('+val+');';
+        cssTransition: function(width, val) {
+            return 'width:' + width + '; transform: translateX(' + val + ');';
         },
 
-        hide:function(){
+        hide: function() {
             // transition: all .3s linear;
             var dom = $('#' + mId),
-                curPage = $('#'+ seajs.data.vars.curModule);
+                curPage = $('#' + seajs.data.vars.curModule);
             this.status = 'hide';
 
             $('html').removeClass('panelShow');
@@ -109,28 +109,30 @@ define(function(require, exports, module) {
             dom.find('li').removeClass('selected');
             dom.find('li.' + seajs.data.vars.curModule).addClass('selected');
 
-            dom.find('.panel_cover').css({'display':'none','opacity':'0'});
+            dom.find('.panel_cover').css({ 'display': 'none', 'opacity': '0' });
 
             this.resetCss();
         },
 
-        show:function(){
+        show: function() {
             var dom = $('#' + mId);
             this.status = 'show';
+
+            share.blur(seajs.data.vars.curModule);
 
             $('html').addClass('panelShow');
 
             dom.find('.panel_cover').show();
 
-            setTimeout(function(){
-                dom.find('.panel_cover').css({'display':'block','opacity':'1'});
-            },200);
+            setTimeout(function() {
+                dom.find('.panel_cover').css({ 'display': 'block', 'opacity': '1' });
+            }, 200);
             this.resetCss();
         },
 
-        toggle:function(){
+        toggle: function() {
             this.status == 'hide' ? this.show() : this.hide();
-        }, 
+        },
 
     }
     module.exports = controller;
