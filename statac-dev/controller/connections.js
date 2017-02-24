@@ -136,8 +136,12 @@ define(function(require, exports, module) {
                         if (tabName == 'favorites') {
                             had_see = data.res;
                         }
-                        _userList.append(tthis.templateL({ arr: had_see }));
-                        _userList.lazyload({ center: true });
+                        if(!had_see.length && !_userList.find('li').length){
+                            _userList.html('<p class="noData">When someone visits your profile, they\'ll show up here.</p>');
+                        }else{
+                            _userList.append(tthis.templateL({ arr: had_see }));
+                            _userList.lazyload({ center: true });
+                        }
                     }
                 }
             };

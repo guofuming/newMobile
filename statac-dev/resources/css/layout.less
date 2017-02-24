@@ -352,6 +352,45 @@ html.panelShow{
         padding-top: 16px;
 
     }
+    .notice_photo{
+        position: relative;
+        line-height: 30px;
+        min-height: 30px;
+        text-align: center;
+        border-radius: 4px;
+        font-size: 11px;
+        margin: 18px 2px;
+        border: 1px solid @g-cl;
+        color: @g-cl;
+        span{
+            color: #fff;
+            background: #f64747;
+            border-radius: 7px;
+            padding: 1px 6px;
+            margin-left: 10px;
+        }
+        .arrow{
+            position: absolute;
+            right: 15px;
+            top: 8px;
+            float: right;
+            &:before,&:after {
+                border: 6px solid transparent;
+                border-left: 6px solid #f5f7f8;
+                width: 0;
+                height: 0;
+                position: absolute;
+                top: 0;
+                right: -12px;
+                content: ' ';
+            }
+            &:before{
+                border-left-color:@g-cl;
+                right: -13px;
+            }
+        }
+
+    }
     .portrait{
         float: left;
         width: 106px;
@@ -987,6 +1026,16 @@ display: -webkit-box;
     }
     .g-bd{
         height: calc(~'100% - 91px');
+    }
+
+    .noData{
+        color: @g-cl;
+        font-size: 14px;
+        padding: 25px;
+        line-height: 20px;
+        text-align: center;
+        font-weight: 100;
+        margin: 20px auto auto auto;
     }
 }
 /********connections end********/

@@ -676,6 +676,45 @@ html.panelShow .g-hd {
 #myProfile .info_box {
   padding-top: 16px;
 }
+#myProfile .notice_photo {
+  position: relative;
+  line-height: 30px;
+  min-height: 30px;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 11px;
+  margin: 18px 2px;
+  border: 1px solid #3FAFE4;
+  color: #3FAFE4;
+}
+#myProfile .notice_photo span {
+  color: #fff;
+  background: #f64747;
+  border-radius: 7px;
+  padding: 1px 6px;
+  margin-left: 10px;
+}
+#myProfile .notice_photo .arrow {
+  position: absolute;
+  right: 15px;
+  top: 8px;
+  float: right;
+}
+#myProfile .notice_photo .arrow:before,
+#myProfile .notice_photo .arrow:after {
+  border: 6px solid transparent;
+  border-left: 6px solid #f5f7f8;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+  right: -12px;
+  content: ' ';
+}
+#myProfile .notice_photo .arrow:before {
+  border-left-color: #3FAFE4;
+  right: -13px;
+}
 #myProfile .portrait {
   float: left;
   width: 106px;
@@ -1985,6 +2024,15 @@ html.panelShow .g-hd {
 }
 #connections .g-bd {
   height: calc(100% - 91px);
+}
+#connections .noData {
+  color: #3FAFE4;
+  font-size: 14px;
+  padding: 25px;
+  line-height: 20px;
+  text-align: center;
+  font-weight: 100;
+  margin: 20px auto auto auto;
 }
 /********connections end********/
 /* media */

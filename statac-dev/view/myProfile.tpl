@@ -33,6 +33,9 @@
             </div>
             <div class="tab_content_box">
                 <div class="selected tab_content tab_content_photo">
+                    <div class="notice_photo">Manage private photo access<span>1</span>
+                        <div class="arrow"></div>
+                    </div>
                     <div type="public_album" class="album_box public_album">
                         <h3><span class="title">Public</span>
                             <% if(pictures.length){%>
