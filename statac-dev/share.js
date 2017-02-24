@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
 
     var share = {};
-
+// 123
 
     share.panelList = [
         { class:'upgrade', text:'Upgrade', url:'upgrade'},
